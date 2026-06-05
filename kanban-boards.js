@@ -18,6 +18,7 @@ const kanbanEls = {
 
 let kanbanPayload = null;
 let activeKanbanId = "";
+let pendingKanbanJump = "";
 
 const localKanbanEmbeddableHost =
   location.protocol === "http:" &&
@@ -26,6 +27,14 @@ const mobileKanbanQuery = window.matchMedia("(max-width: 760px)");
 
 const columnOrder = ["backlog", "ready", "in_progress", "blocked", "review", "done"];
 const maxStaticCardsPerColumn = 8;
+const explicitBoardMap = {
+  "hapa-character-sheet": "hapa-ecosystem-packaging-quest",
+  "hapa-awesome": "hapa-ecosystem-packaging-quest",
+  "hapa-quest-keeper": "hapa-quest-keeper",
+  "hapa-space": "hapa-ecosystem-packaging-quest",
+  "hapa-proto0-00-00-7-visualizer": "hapa-ecosystem-packaging-quest",
+  "hapa-scratchpad": "hapa-ecosystem-packaging-quest",
+};
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -50,6 +59,48 @@ function boardKind(board) {
 function boardUrl(board) {
   const base = kanbanPayload?.liveBaseUrl || "http://127.0.0.1:5181/";
   return `${base}?project=${encodeURIComponent(board.id)}`;
+}
+
+function slugifyNodeName(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function resolveBoardId(id) {
+  if (!kanbanPayload?.boards?.length) return id;
+  const boardIds = new Set(kanbanPayload.boards.map((board) => board.id));
+  return boardIds.has(id) ? id : "";
+}
+
+function boardIdForNodeName(name) {
+  if (!kanbanPayload?.boards?.length) return "";
+  const slug = slugifyNodeName(name);
+  const boardIds = new Set(kanbanPayload.boards.map((board) => board.id));
+  const candidates = [
+    explicitBoardMap[slug],
+    `hapa-app-${slug}`,
+    slug,
+  ].filter(Boolean);
+
+  return candidates.find((id) => boardIds.has(id)) || kanbanPayload.defaultProjectId;
+}
+
+function jumpToKanbanBoard(id, shouldScroll = true) {
+  const boardId = resolveBoardId(id) || kanbanPayload?.defaultProjectId || id;
+  pendingKanbanJump = boardId;
+  if (kanbanPayload?.boards?.length) {
+    setActiveKanban(boardId);
+  }
+  if (shouldScroll) {
+    document.querySelector("#kanban")?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
+  }
 }
 
 function shouldEmbedKanbanFrame() {
@@ -224,19 +275,44 @@ function renderActiveBoard(board) {
   renderStaticBoard(board);
 }
 
+function hydrateRepoBoardLinks() {
+  document.querySelectorAll(".repo-card").forEach((card) => {
+    if (card.querySelector(".repo-board-link")) return;
+    const title = card.querySelector("h3")?.textContent?.trim();
+    if (!title) return;
+    const boardId = boardIdForNodeName(title);
+    const isEcosystemFallback = boardId === kanbanPayload.defaultProjectId;
+    const link = document.createElement("a");
+    link.className = `repo-board-link${isEcosystemFallback ? " ecosystem" : ""}`;
+    link.href = "#kanban";
+    link.dataset.kanbanJump = boardId;
+    link.setAttribute("aria-label", `${isEcosystemFallback ? "Open ecosystem board for" : "Open Kanban board for"} ${title}`);
+    link.innerHTML = `<span>${isEcosystemFallback ? "Ecosystem board" : "Kanban board"}</span>`;
+    card.append(link);
+  });
+}
+
 async function initKanbanBoards() {
   if (!kanbanEls.console) return;
   try {
-    const response = await fetch("assets/kanban-boards.json?v=kanban-view-20260605");
+    const response = await fetch("assets/kanban-boards.json?v=kanban-bottom-20260605");
     kanbanPayload = await response.json();
     renderProjectSelect();
-    const initial = kanbanPayload.defaultProjectId || kanbanPayload.boards[0]?.id;
+    hydrateRepoBoardLinks();
+    const queryBoard = new URLSearchParams(location.search).get("board");
+    const initial = resolveBoardId(queryBoard || pendingKanbanJump) || kanbanPayload.defaultProjectId || kanbanPayload.boards[0]?.id;
     setActiveKanban(initial);
   } catch (error) {
     kanbanEls.console.innerHTML = `<p class="kanban-empty">Kanban snapshot failed to load: ${escapeHtml(error.message)}</p>`;
   }
 }
 
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("[data-kanban-jump]");
+  if (!link) return;
+  event.preventDefault();
+  jumpToKanbanBoard(link.dataset.kanbanJump);
+});
 kanbanEls.select?.addEventListener("change", () => setActiveKanban(kanbanEls.select.value));
 kanbanEls.search?.addEventListener("input", renderBoardList);
 kanbanEls.list?.addEventListener("click", (event) => {

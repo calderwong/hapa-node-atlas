@@ -7,7 +7,7 @@
     <meta name="description" content="Hapa Node Atlas maps the public Hapa ecosystem: local-first AI nodes, memory, media, cards, agents, provenance, and protocol handoffs." />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=kanban-view-20260605" />
+    <link rel="stylesheet" href="styles.css?v=kanban-bottom-20260605" />
   </head>
   <body>
     <header class="topbar">
@@ -159,6 +159,10 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-5 0-9 4.5-10 7.5 1 3 5 7.5 10 7.5s9-4.5 10-7.5c-1-3-5-7.5-10-7.5Zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
               Open
             </a>
+            <a id="activeBoardLink" class="action-link secondary board-jump-link" href="#kanban" data-kanban-jump="hapa-ecosystem-packaging-quest">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v4H4V5Zm0 6h7v8H4v-8Zm9 0h7v8h-7v-8Z"/></svg>
+              Board
+            </a>
           </div>
         </div>
 
@@ -204,74 +208,6 @@
               src="nodes/character-sheet/index.html?v=video-contain-20260605#presentation"
               sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
             ></iframe>
-          </section>
-        </div>
-      </section>
-
-      <section class="kanban-section" id="kanban" aria-labelledby="kanban-title">
-        <div class="section-head">
-          <div>
-            <p class="micro">OVERWATCH / APPEND-ONLY BOARDS</p>
-            <h2 id="kanban-title">Kanban Command Boards</h2>
-            <p class="repo-summary">The ecosystem-wide Overwatch board plus node-specific boards for each Hapa app, embedded from the local Kanban service when available and mirrored as a static snapshot for public viewing.</p>
-          </div>
-          <div class="kanban-actions">
-            <a class="action-link" id="kanbanLiveLink" href="http://127.0.0.1:5181/?project=hapa-ecosystem-packaging-quest" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3Z"/><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
-              Open Live
-            </a>
-          </div>
-        </div>
-
-        <div class="kanban-console" data-kanban-console>
-          <aside class="kanban-selector" aria-label="Kanban board selector">
-            <div class="kanban-selector-head">
-              <span class="status-dot"></span>
-              <div>
-                <p class="micro">BOARD ROUTER</p>
-                <h3>Overall + Node Boards</h3>
-              </div>
-            </div>
-            <label class="kanban-field">
-              <span>Project</span>
-              <select id="kanbanProjectSelect"></select>
-            </label>
-            <label class="kanban-field">
-              <span>Filter boards</span>
-              <input id="kanbanSearch" type="search" placeholder="second brain, dev proto, overwatch..." autocomplete="off" />
-            </label>
-            <div class="kanban-board-list" id="kanbanBoardList" aria-label="Available Kanban boards"></div>
-          </aside>
-
-          <section class="kanban-view" aria-label="Selected Kanban board">
-            <div class="kanban-view-head">
-              <div>
-                <p class="micro" id="kanbanEyebrow">HAPA ECOSYSTEM / OVERALL QUEST</p>
-                <h3 id="kanbanBoardTitle">Loading Kanban board</h3>
-                <p id="kanbanBoardSummary"></p>
-              </div>
-              <div class="kanban-chip-row" id="kanbanTelemetry" aria-label="Kanban telemetry"></div>
-            </div>
-
-            <div class="kanban-frame-shell">
-              <div class="kanban-frame-status" id="kanbanFrameStatus">
-                <span><i></i> Local Overwatch Kanban embed</span>
-                <span id="kanbanFramePath">http://127.0.0.1:5181/?project=hapa-ecosystem-packaging-quest</span>
-              </div>
-              <iframe
-                class="kanban-iframe"
-                id="kanbanFrame"
-                title="Overwatch Kanban board embed"
-                loading="lazy"
-                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
-              ></iframe>
-            </div>
-
-            <div class="kanban-static-head">
-              <p class="micro">STATIC SNAPSHOT / PUBLIC SAFE</p>
-              <span id="kanbanSnapshotStamp">Snapshot loading</span>
-            </div>
-            <div class="kanban-static-board" id="kanbanStaticBoard" aria-label="Static Kanban board snapshot"></div>
           </section>
         </div>
       </section>
@@ -707,10 +643,78 @@
           ></iframe>
         </div>
       </section>
+
+      <section class="kanban-section" id="kanban" aria-labelledby="kanban-title">
+        <div class="section-head">
+          <div>
+            <p class="micro">OVERWATCH / APPEND-ONLY BOARDS</p>
+            <h2 id="kanban-title">Kanban Command Boards</h2>
+            <p class="repo-summary">The ecosystem-wide Overwatch board plus node-specific boards for each Hapa app, embedded from the local Kanban service when available and mirrored as a static snapshot for public viewing.</p>
+          </div>
+          <div class="kanban-actions">
+            <a class="action-link" id="kanbanLiveLink" href="http://127.0.0.1:5181/?project=hapa-ecosystem-packaging-quest" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3Z"/><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+              Open Live
+            </a>
+          </div>
+        </div>
+
+        <div class="kanban-console" data-kanban-console>
+          <aside class="kanban-selector" aria-label="Kanban board selector">
+            <div class="kanban-selector-head">
+              <span class="status-dot"></span>
+              <div>
+                <p class="micro">BOARD ROUTER</p>
+                <h3>Overall + Node Boards</h3>
+              </div>
+            </div>
+            <label class="kanban-field">
+              <span>Project</span>
+              <select id="kanbanProjectSelect"></select>
+            </label>
+            <label class="kanban-field">
+              <span>Filter boards</span>
+              <input id="kanbanSearch" type="search" placeholder="second brain, dev proto, overwatch..." autocomplete="off" />
+            </label>
+            <div class="kanban-board-list" id="kanbanBoardList" aria-label="Available Kanban boards"></div>
+          </aside>
+
+          <section class="kanban-view" aria-label="Selected Kanban board">
+            <div class="kanban-view-head">
+              <div>
+                <p class="micro" id="kanbanEyebrow">HAPA ECOSYSTEM / OVERALL QUEST</p>
+                <h3 id="kanbanBoardTitle">Loading Kanban board</h3>
+                <p id="kanbanBoardSummary"></p>
+              </div>
+              <div class="kanban-chip-row" id="kanbanTelemetry" aria-label="Kanban telemetry"></div>
+            </div>
+
+            <div class="kanban-frame-shell">
+              <div class="kanban-frame-status" id="kanbanFrameStatus">
+                <span><i></i> Local Overwatch Kanban embed</span>
+                <span id="kanbanFramePath">http://127.0.0.1:5181/?project=hapa-ecosystem-packaging-quest</span>
+              </div>
+              <iframe
+                class="kanban-iframe"
+                id="kanbanFrame"
+                title="Overwatch Kanban board embed"
+                loading="lazy"
+                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+              ></iframe>
+            </div>
+
+            <div class="kanban-static-head">
+              <p class="micro">STATIC SNAPSHOT / PUBLIC SAFE</p>
+              <span id="kanbanSnapshotStamp">Snapshot loading</span>
+            </div>
+            <div class="kanban-static-board" id="kanbanStaticBoard" aria-label="Static Kanban board snapshot"></div>
+          </section>
+        </div>
+      </section>
     </main>
 
-    <script src="script.js?v=mobile-submenus-20260605"></script>
-    <script src="kanban-boards.js?v=kanban-view-20260605"></script>
+    <script src="script.js?v=board-jumps-20260605"></script>
+    <script src="kanban-boards.js?v=kanban-bottom-20260605"></script>
     <script src="dash-graph.js?v=dash-graph-20260605"></script>
   </body>
 </html>

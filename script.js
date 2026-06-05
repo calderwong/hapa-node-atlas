@@ -9,6 +9,7 @@ const nodes = {
       "Loaded from the standalone Hapa Character Sheet prototype, including its data JS/JSON, mock routes, sprites, and media assets.",
     frame: "nodes/character-sheet/index.html?v=video-contain-20260605#presentation",
     repo: "https://github.com/calderwong/hapa-character-sheet",
+    board: "hapa-ecosystem-packaging-quest",
     status: "Calder/CJ dossier loaded",
     metrics: [
       ["Public repo", "hapa-character-sheet"],
@@ -30,6 +31,7 @@ const nodes = {
       "The public repo ships a local API-backed UI. This embed uses brochure-safe demo data so it remains portable.",
     frame: "nodes/hapa-second-brain/index.html?v=mobile-submenus-20260605",
     repo: "https://github.com/calderwong/hapa-second-brain",
+    board: "hapa-app-hapa-second-brain",
     status: "memory projection filled",
     metrics: [
       ["Repo", "hapa-second-brain"],
@@ -51,6 +53,7 @@ const nodes = {
     frame: "nodes/hapa-dev-proto/index.html?v=mobile-submenus-20260605",
     open: "nodes/hapa-dev-proto-renderer/index.html",
     repo: "https://github.com/calderwong/hapa-dev-proto",
+    board: "hapa-app-hapa-dev-proto",
     status: "dev sandbox preview online",
     metrics: [
       ["Repo", "hapa-dev-proto"],
@@ -65,6 +68,7 @@ const nodes = {
 const nodeFrame = document.querySelector("#nodeFrame");
 const activeRepoLink = document.querySelector("#activeRepoLink");
 const activeEmbedLink = document.querySelector("#activeEmbedLink");
+const activeBoardLink = document.querySelector("#activeBoardLink");
 const activeEyebrow = document.querySelector("#activeEyebrow");
 const activeTitle = document.querySelector("#activeTitle");
 const activeDescription = document.querySelector("#activeDescription");
@@ -90,6 +94,8 @@ function setActiveNode(key) {
   activeNote.textContent = node.note;
   activeRepoLink.href = node.repo;
   activeEmbedLink.href = node.open || node.frame;
+  activeBoardLink.dataset.kanbanJump = node.board;
+  activeBoardLink.href = "#kanban";
   frameStatus.textContent = node.status;
   framePath.textContent = node.frame;
   nodeFrame.title = `${node.title} embed`;

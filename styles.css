@@ -807,10 +807,15 @@ iframe {
   gap: 8px;
 }
 
+.kanban-section {
+  border-top: 1px solid rgba(125, 211, 252, 0.18);
+  padding-top: clamp(54px, 8vw, 96px);
+}
+
 .kanban-console {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 10px;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 12px;
   align-items: start;
 }
 
@@ -1046,14 +1051,15 @@ iframe {
 
 .kanban-static-board {
   display: grid;
-  grid-template-columns: repeat(6, minmax(180px, 1fr));
-  gap: 8px;
-  overflow-x: auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+  align-items: start;
+  overflow: visible;
   padding-bottom: 4px;
 }
 
 .kanban-column {
-  min-width: 180px;
+  min-width: 0;
   display: grid;
   align-content: start;
   gap: 8px;
@@ -1065,6 +1071,7 @@ iframe {
 }
 
 .kanban-column-head {
+  min-width: 0;
   min-height: 58px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1077,6 +1084,7 @@ iframe {
 .kanban-column-head strong,
 .kanban-task-card h4 {
   color: #f8fafc;
+  overflow-wrap: anywhere;
 }
 
 .kanban-column-head small {
@@ -1085,6 +1093,7 @@ iframe {
   color: var(--muted);
   font-size: 0.68rem;
   line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .kanban-column-head > span {
@@ -1099,11 +1108,13 @@ iframe {
 }
 
 .kanban-card-stack {
+  min-width: 0;
   display: grid;
   gap: 7px;
 }
 
 .kanban-task-card {
+  min-width: 0;
   display: grid;
   gap: 7px;
   border-radius: 8px;
@@ -1120,6 +1131,7 @@ iframe {
 
 .kanban-task-top span,
 .kanban-task-meta span {
+  max-width: 100%;
   min-height: 20px;
   display: inline-flex;
   align-items: center;
@@ -1131,6 +1143,7 @@ iframe {
   font-size: 0.54rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .kanban-task-top span:first-child {
@@ -1151,6 +1164,7 @@ iframe {
   color: #cbd5e1;
   font-size: 0.76rem;
   line-height: 1.42;
+  overflow-wrap: anywhere;
 }
 
 .kanban-column-empty,
@@ -1179,7 +1193,7 @@ iframe {
   min-height: 224px;
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr);
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
   align-content: stretch;
   gap: 8px 10px;
   padding: 12px;
@@ -1278,6 +1292,37 @@ iframe {
   font-family: var(--mono);
   font-size: 0.64rem;
   overflow-wrap: anywhere;
+}
+
+.repo-card .repo-board-link {
+  grid-row: 5;
+  justify-self: start;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0 10px;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 8px;
+  background: rgba(8, 47, 73, 0.54);
+  color: #ecfeff;
+  text-decoration: none;
+  overflow-wrap: normal;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.repo-card .repo-board-link:hover {
+  border-color: var(--cyan);
+  background: rgba(14, 116, 144, 0.32);
+  transform: translateY(-1px);
+}
+
+.repo-card .repo-board-link.ecosystem {
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #fde68a;
+  background: rgba(69, 26, 3, 0.32);
 }
 
 .dash-graph-section {
@@ -1879,7 +1924,10 @@ iframe {
   }
 
   .kanban-static-board {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    overflow-x: visible;
   }
 
   .dash-mode-rail,
@@ -2071,6 +2119,8 @@ iframe {
   }
 
   .kanban-static-board {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
     grid-template-columns: 1fr;
     gap: 8px;
     overflow-x: visible;

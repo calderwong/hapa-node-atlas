@@ -109,7 +109,12 @@ h3 {
 .node-tab span,
 .frame-toolbar,
 .metric-list,
-.repo-index {
+.repo-index,
+.tweet-label,
+.tweet-meta,
+.problem-status,
+.protocol-strip,
+.answer-row > span {
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -203,6 +208,10 @@ h3 {
 main {
   width: min(1480px, calc(100% - 32px));
   margin: 0 auto;
+}
+
+main > section {
+  scroll-margin-top: 92px;
 }
 
 .hero {
@@ -327,6 +336,298 @@ main {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.problem-section {
+  padding: 24px 0 72px;
+}
+
+.problem-head {
+  align-items: end;
+}
+
+.problem-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #cbd5e1;
+  font-size: 0.66rem;
+}
+
+.problem-status span {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.problem-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--amber);
+  box-shadow: 0 0 14px var(--amber);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.95fr) minmax(0, 1.05fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.tweet-artifact {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 100%;
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgba(34, 211, 238, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 70, 239, 0.034) 1px, transparent 1px),
+    radial-gradient(circle at 18% 12%, rgba(34, 211, 238, 0.15), transparent 32%),
+    linear-gradient(145deg, rgba(9, 17, 31, 0.94), rgba(2, 6, 23, 0.9));
+  background-size: 22px 22px, 22px 22px, auto, auto;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(217, 70, 239, 0.1),
+    inset 0 0 80px rgba(34, 211, 238, 0.045);
+}
+
+.tweet-artifact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.032) 1px, transparent 1px, transparent 5px);
+  opacity: 0.38;
+  mix-blend-mode: screen;
+}
+
+.tweet-artifact > * {
+  position: relative;
+  z-index: 1;
+}
+
+.tweet-chrome {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 26px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.16);
+}
+
+.tweet-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--rose);
+  box-shadow: 0 0 14px rgba(251, 113, 133, 0.58);
+}
+
+.tweet-dot.amber {
+  background: var(--amber);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.58);
+}
+
+.tweet-dot.green {
+  background: var(--green);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.58);
+}
+
+.tweet-label {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.62rem;
+  text-align: right;
+}
+
+.tweet-author {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.tweet-avatar {
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(34, 211, 238, 0.42);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 34% 30%, #fef3c7 0 10%, transparent 11%),
+    radial-gradient(circle at 62% 28%, #67e8f9 0 11%, transparent 12%),
+    radial-gradient(circle at 38% 68%, #34d399 0 12%, transparent 13%),
+    radial-gradient(circle at 68% 66%, #e879f9 0 12%, transparent 13%),
+    radial-gradient(circle at 50% 50%, rgba(226, 232, 240, 0.92), rgba(15, 23, 42, 0.9));
+  box-shadow: 0 0 28px rgba(34, 211, 238, 0.2);
+}
+
+.tweet-author strong,
+.tweet-author span {
+  display: block;
+  min-width: 0;
+}
+
+.tweet-author strong {
+  line-height: 1.15;
+}
+
+.tweet-author span {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.verified-mark {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--cyan);
+  color: #020617;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.46);
+}
+
+.verified-mark svg {
+  width: 16px;
+  height: 16px;
+}
+
+.tweet-artifact blockquote {
+  margin: 0;
+}
+
+.tweet-artifact blockquote p {
+  color: #f8fafc;
+  font-size: clamp(1rem, 1.24vw, 1.12rem);
+  line-height: 1.52;
+}
+
+.tweet-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(125, 211, 252, 0.16);
+  color: #cbd5e1;
+  font-size: 0.66rem;
+}
+
+.tweet-meta span {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.46);
+}
+
+.hapa-answer {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.answer-callout {
+  padding: 18px;
+  border: 1px solid rgba(34, 211, 238, 0.32);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.1), transparent 46%, rgba(217, 70, 239, 0.08)),
+    rgba(9, 17, 31, 0.78);
+}
+
+.answer-callout h3 {
+  margin-top: 8px;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+.answer-callout p:not(.micro) {
+  max-width: 72ch;
+  margin-top: 10px;
+  color: #dbeafe;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.answer-map {
+  display: grid;
+  gap: 8px;
+}
+
+.answer-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: var(--radius);
+  background: rgba(9, 17, 31, 0.68);
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.answer-row:hover {
+  border-color: rgba(34, 211, 238, 0.54);
+  background: rgba(15, 23, 42, 0.82);
+  transform: translateY(-1px);
+}
+
+.answer-row > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(34, 211, 238, 0.34);
+  border-radius: 8px;
+  color: var(--cyan);
+  font-size: 0.66rem;
+  background: rgba(2, 6, 23, 0.72);
+  box-shadow: inset 0 0 20px rgba(34, 211, 238, 0.08);
+}
+
+.answer-row h3 {
+  font-size: 1rem;
+}
+
+.answer-row p {
+  margin-top: 5px;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.48;
+}
+
+.protocol-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.protocol-strip span {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.26);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(245, 158, 11, 0.08), transparent),
+    rgba(2, 6, 23, 0.52);
+  color: #fde68a;
+  font-size: 0.62rem;
+  line-height: 1.35;
 }
 
 .embed-stage,
@@ -1063,7 +1364,8 @@ iframe {
 
 @media (max-width: 1080px) {
   .hero,
-  .stage-grid {
+  .stage-grid,
+  .problem-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1084,6 +1386,14 @@ iframe {
   .node-detail p,
   .detail-note {
     grid-column: 1 / -1;
+  }
+
+  .problem-status {
+    justify-content: flex-start;
+  }
+
+  .protocol-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .dash-console {
@@ -1142,6 +1452,39 @@ iframe {
   .ecosystem-visual figcaption {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .problem-section {
+    padding-top: 10px;
+  }
+
+  .problem-grid {
+    gap: 12px;
+  }
+
+  .tweet-artifact,
+  .answer-callout,
+  .answer-row {
+    padding: 12px;
+  }
+
+  .tweet-chrome {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .tweet-label {
+    flex-basis: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .tweet-artifact blockquote p {
+    font-size: 0.94rem;
+  }
+
+  .protocol-strip {
+    grid-template-columns: 1fr;
   }
 
   .node-tabs,

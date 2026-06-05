@@ -1,0 +1,134 @@
+{
+  "id": "black-horizon-repo-to-ship-world-loop",
+  "name": "Black Horizon Repo-To-Ship World Loop",
+  "summary": "Converts Hapa repositories into lore-safe ships, cards, rooms, duties, and future world-state records while preserving source truth and human review gates.",
+  "color": 3782655,
+  "createdAt": "2026-05-30T00:00:00-07:00",
+  "steps": [
+    {
+      "source": "Human",
+      "target": "Overwatch",
+      "layer": "UI",
+      "label": "The human frames the desired playable operating metaphor and names the MVP goal.",
+      "explanation": [
+        "The route begins with human intent. In Black Horizon, the goal is to make Hapa repositories feel like ships in an explorable fleet without pretending the visual layer has operational authority.",
+        "Overwatch turns that intent into a board-backed work record with visible scope, review gates, and proof requirements."
+      ]
+    },
+    {
+      "source": "Overwatch",
+      "target": "hapa-overwatch-kanban",
+      "layer": "DATA",
+      "label": "Overwatch records cards, starts, checkpoints, review gates, and telemetry as append-only events.",
+      "explanation": [
+        "The board is a projection from events, not the source of truth by itself. This keeps coordination replayable and reviewable after context resets.",
+        "Human review remains explicit: a card is not accepted into the baseline just because it appears in a game scene."
+      ]
+    },
+    {
+      "source": "hapa-fleet-compiler",
+      "target": "Repo Facts",
+      "layer": "CLI|DATA",
+      "label": "The compiler reads node-map rows, repo paths, generated metrics, and existing proof reports.",
+      "explanation": [
+        "Repo-to-ship conversion must start from live local facts and current evidence. The compiler should prefer node maps, metrics, schemas, reports, and board state over vibes.",
+        "Any generated stat or identity that goes beyond those inputs remains a labeled projection until reviewed."
+      ]
+    },
+    {
+      "source": "Repo Facts",
+      "target": "Ship Definitions",
+      "layer": "DATA",
+      "label": "Deterministic rules produce ship class, stats, rooms, crew slots, duties, and card drafts.",
+      "explanation": [
+        "A repository becomes a ship because it has operational shape: role, dependencies, files, duties, health signals, and review pressure.",
+        "The mapping is useful as a game object, but it must preserve provenance so a player can inspect why the ship looks and behaves that way."
+      ]
+    },
+    {
+      "source": "Ship Definitions",
+      "target": "hapa-space",
+      "layer": "DATA|UI",
+      "label": "Unity consumes generated data and renders the Black Horizon fleet world.",
+      "explanation": [
+        "Unity is the teaching surface: ships, interiors, cards, sockets, orbit lanes, stations, black holes, artifact markers, and safe controls make the ecosystem understandable.",
+        "Unity visualization is not live service health, deployment authority, prefab promotion, or repository mutation."
+      ]
+    },
+    {
+      "source": "Overwatch",
+      "target": "Orbit Clock",
+      "layer": "DATA",
+      "label": "Board progress becomes the epic clock and time-dilation state for Black Horizon.",
+      "explanation": [
+        "The orbit clock lets work progression become a world signal. It is driven by append-only task state and should remain separate from human acceptance decisions.",
+        "When board events move, the generated clock sidecar should be refreshed and labeled with its event count."
+      ]
+    },
+    {
+      "source": "Unity and Phone Deck",
+      "target": "Safe Command Router",
+      "layer": "UI|API",
+      "label": "Local, WebSocket, and phone controls route visual commands and safe duties only.",
+      "explanation": [
+        "The player can focus ships, play visual duties, and interact with card-like controls through shared semantic commands.",
+        "The route must not grant repo, service, credential, scene, prefab, or generated asset promotion authority."
+      ]
+    },
+    {
+      "source": "Reviewed Ship/Card Records",
+      "target": "Janus, Anvil, and Lance",
+      "layer": "DATA",
+      "label": "Future accepted records should flow into Janus world-state, Anvil card forge, and Lance retrieval projections.",
+      "explanation": [
+        "Janus is the intended durable world-state kernel. Anvil is the intended reviewed card forge. Lance is the intended retrieval and index projection layer.",
+        "Until those bridges exist, the flow names them as future record owners, not current runtime behavior."
+      ]
+    },
+    {
+      "source": "Overwatch, Wiki, and Second Brain",
+      "target": "Future Agents",
+      "layer": "DATA",
+      "label": "The route writes back durable evidence for future Hapa agents.",
+      "explanation": [
+        "The point of the flow explainer is reuse. Future agents should retrieve this before converting nodes, repos, workflows, cards, or duties into game-world objects.",
+        "The record names verified facts, inferred mappings, lore framing, speculative future work, and exact safety boundaries."
+      ]
+    }
+  ],
+  "card": {
+    "verb": "PROJECT",
+    "type": "Repo-To-World Conversion",
+    "rank": "Legendary",
+    "grade": "A-",
+    "description": "Converts Hapa repositories into lore-safe ships, cards, rooms, duties, and world-state proposals while preserving source truth and human review gates.",
+    "effect": "Lets a player/operator learn the Hapa node ecosystem as a fleet without granting game objects real mutation authority.",
+    "risk": "If generated ship identity is treated as verified fact, the game layer can obscure repo truth or imply unsafe authority.",
+    "stats": {
+      "impact": 10,
+      "reliability": 7,
+      "complexity": 8,
+      "cost": 5,
+      "speed": 7,
+      "teaching": 10
+    }
+  },
+  "wikiPath": "/Users/calderwong/Desktop/Hapa_Worldbuilding_Wiki/Operations/Flow Explainers/Black Horizon Repo-To-Ship World Loop.md",
+  "recordRule": {
+    "coordination": "hapa-overwatch-kanban append-only event log",
+    "generatedData": "hapa-fleet-compiler manifests, cards, stats, runtime projections, and orbit clock",
+    "runtimeVisualization": "hapa-space Unity scene and smoke reports",
+    "canon": "Hapa Worldbuilding Wiki truth-status lanes",
+    "retrieval": "Hapa Second Brain retrieval notes",
+    "futureWorldState": "hapa-janus-world-node after bridge implementation",
+    "futureCardForge": "hapa-anvil-node after reviewed export",
+    "futureIndex": "hapa-lance-node after reviewed projection"
+  },
+  "truthStatus": {
+    "verifiedRuntimeFact": "Local files, generated JSON, board events, smoke output, browser/API checks, Unity reports.",
+    "technicalProtocol": "Deterministic mapping rules, schemas, commands, parity surfaces, record owners, and safety gates.",
+    "mvpInference": "Design meaning from repo shape, role, dependencies, rooms, duties, and ship class.",
+    "mythopoeticGameLayer": "Black holes, stations, artifact contest, orbit clock, fleet crew, cards, and duties as teaching metaphors.",
+    "speculativeFuture": "Janus live world-state, Anvil/Lance card promotion, physical phone table controls, match loop, AI fleet generation."
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "hapa-sequential-pass-triad",
+  "name": "Hapa Sequential Pass Triad",
+  "summary": "Routes Hapa work through speed, optionality, and production-value passes while preserving lineage and card memory.",
+  "color": 6281144,
+  "createdAt": "2026-05-31T00:00:00-07:00",
+  "steps": [
+    {
+      "source": "Context",
+      "target": "For The Throat",
+      "layer": "DATA|CLI|API|UI",
+      "label": "Compress the objective, deadline, constraints, and tolerance into the fastest acceptable solution.",
+      "explanation": [
+        "For The Throat is the deadline pass. It solves the immediate problem and keeps the result inside tolerance.",
+        "The pass is fast, but it still leaves Hapa foundations: surface intent, dependency notes, registry hooks, and lineage."
+      ]
+    },
+    {
+      "source": "For The Throat",
+      "target": "Hapa Foundations",
+      "layer": "DATA",
+      "label": "Leave future-ready protocol hooks even when the first answer is minimal.",
+      "explanation": [
+        "A minimum answer should not be memoryless. It should preserve the evidence a later agent needs.",
+        "Turn Cards, Card Memory Ledgers, UI/API/CLI gaps, and node capability notes convert speed into reusable experience."
+      ]
+    },
+    {
+      "source": "Hapa Foundations",
+      "target": "Every Which Way",
+      "layer": "DATA|API|CLI",
+      "label": "Reopen the result while compute or time is available and compare alternatives.",
+      "explanation": [
+        "Every Which Way asks what else could work now that the first answer exists.",
+        "It compares local/open-source lanes, remote/paid lanes, support-both choices, appendable improvements, and replacement candidates."
+      ]
+    },
+    {
+      "source": "Every Which Way",
+      "target": "With Flair",
+      "layer": "DATA|UI",
+      "label": "Hand the best structural answer to a production-value pass.",
+      "explanation": [
+        "With Flair assumes the structure is good enough to teach.",
+        "It turns what worked into docs, demos, cards, loops, songs, and explainers that improve understanding and retention."
+      ]
+    },
+    {
+      "source": "With Flair",
+      "target": "Protocol Cards",
+      "layer": "DATA",
+      "label": "Mint or update operating cards, skill candidates, lore, songs, loops, and teaching artifacts.",
+      "explanation": [
+        "The card is the reusable handle for the learned protocol.",
+        "A good card names when to play it, what it does, what can fail, and where future experience is written."
+      ]
+    },
+    {
+      "source": "Protocol Cards",
+      "target": "Hapa Second Brain",
+      "layer": "DATA|API|CLI",
+      "label": "Index pass records, card lineage, and sharpening notes for retrieval.",
+      "explanation": [
+        "Second Brain makes the protocol retrievable by future humans and agents.",
+        "Feedback, creation lineage, and deployment opportunities keep the protocol from becoming passive prose."
+      ]
+    }
+  ],
+  "card": {
+    "verb": "SEQUENCE",
+    "type": "Protocol Pass Triad",
+    "rank": "Legendary",
+    "grade": "A",
+    "description": "Routes work through speed, optionality, and production value without losing lineage.",
+    "effect": "Agents can choose the right resource stance and still produce future-useful Hapa memory.",
+    "risk": "If the first pass skips lineage, later passes become archaeology instead of improvement.",
+    "stats": {
+      "impact": 10,
+      "reliability": 8,
+      "complexity": 7,
+      "cost": 5,
+      "speed": 9,
+      "teaching": 10
+    }
+  },
+  "wikiPath": "/Users/calderwong/Desktop/Hapa_Worldbuilding_Wiki/Operations/Flow Explainers/Hapa Sequential Pass Triad.md",
+  "canonicalProtocolPath": "/Users/calderwong/Desktop/Hapa_Worldbuilding_Wiki/Operations/Hapa Sequential Pass Protocol.md"
+}

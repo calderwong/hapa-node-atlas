@@ -1,0 +1,75 @@
+{
+  "id": "actor-attribution-avatar-memory",
+  "name": "Actor Attribution And Avatar Memory",
+  "summary": "Track who created, consumed, transformed, and still remembers information across Calder, agents, avatars, and external creators.",
+  "color": 6212308,
+  "steps": [
+    {
+      "source": "external-media",
+      "target": "hapa-second-brain",
+      "layer": "DATA",
+      "label": "Imported media enters as content items with source metadata.",
+      "explanation": [
+        "YouTube, reading, listening, Prime, Spotify, and YouTube Music records keep their source-system identity.",
+        "The second brain does not treat watched content as authored by Calder; it treats it as consumed by Calder and created by the external creator when metadata is available."
+      ]
+    },
+    {
+      "source": "hapa-second-brain",
+      "target": "actor-registry",
+      "layer": "DATA",
+      "label": "Humans, agents, avatars, creators, authors, and systems become actors.",
+      "explanation": [
+        "The actor registry is the identity layer for attribution.",
+        "Calder/CJ, Calder.agents(), Prototype-Calder-Avatar, channels, authors, and future avatar instances are represented by the same actor shape."
+      ]
+    },
+    {
+      "source": "hapa-artifacts",
+      "target": "attribution-ledger",
+      "layer": "DATA",
+      "label": "Hapa artifacts are marked as Calder plus agent-created outputs.",
+      "explanation": [
+        "Wiki pages, cards, source artifacts, and Hapa songs are treated as Hapa-authored or curated outputs.",
+        "The ledger preserves the co-creative relationship between Calder and the AI agents that helped produce the artifacts."
+      ]
+    },
+    {
+      "source": "agent-query",
+      "target": "memory-ledger",
+      "layer": "API",
+      "label": "Agents register consumed context and active memory state.",
+      "explanation": [
+        "When an agent queries the second brain, returned items, chunks, and articles become encountered information for that agent.",
+        "The memory record starts as session-active until a later process confirms durable avatar memory or marks it evicted."
+      ]
+    },
+    {
+      "source": "agent-output",
+      "target": "derivation-ledger",
+      "layer": "API",
+      "label": "Summaries, plans, products, and apps are registered as created derivations.",
+      "explanation": [
+        "A product plan or built application should point back to the source items and agents that shaped it.",
+        "This makes the Prototype-Calder-Avatar capable of explaining not just what it knows, but how knowledge became applied work."
+      ]
+    }
+  ],
+  "card": {
+    "verb": "ATTRIBUTE",
+    "type": "Identity / Knowledge Provenance",
+    "rank": "Rare",
+    "grade": "A",
+    "description": "Separates creator, consumer, curator, agent, and avatar memory roles across the second brain.",
+    "effect": "Every retrieved or created object can answer who created it, who consumed it, who transformed it, and which avatar or agent can still use it.",
+    "risk": "Thin source metadata can overstate authorship; confidence and source-system fields must remain visible.",
+    "stats": {
+      "impact": 10,
+      "reliability": 8,
+      "complexity": 8,
+      "cost": 4,
+      "speed": 6,
+      "teaching": 9
+    }
+  }
+}

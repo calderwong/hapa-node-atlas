@@ -1,0 +1,65 @@
+{
+  "id": "node-space-desktop-flow-authoring",
+  "name": "Node Space Desktop Flow Authoring",
+  "summary": "Use Node Space Desktop to turn a newly discovered multi-node process into a wiki protocol, animated scenario sidecar, flow card, and future content-production brief.",
+  "color": 6220500,
+  "nodes": [
+    "hapa-node-space",
+    "Worldbuilding Wiki",
+    "Atlas",
+    "hapa-lance-node",
+    "hapa-telemetry-node"
+  ],
+  "steps": [
+    {
+      "source": "hapa-node-space",
+      "target": "world-building-wiki",
+      "layer": "DATA",
+      "label": "Desktop form writes the protocol page with route, narration, card hooks, and record rules."
+    },
+    {
+      "source": "hapa-node-space",
+      "target": "hapa-atlas",
+      "layer": "DATA",
+      "label": "JSON sidecar gives Atlas a durable machine-readable flow record to inventory later."
+    },
+    {
+      "source": "world-building-wiki",
+      "target": "hapa-lance-node",
+      "layer": "DATA",
+      "label": "Approved protocol text becomes retrieval context for future agents and operators."
+    },
+    {
+      "source": "hapa-node-space",
+      "target": "hapa-telemetry-node",
+      "layer": "API",
+      "label": "Desktop bridge checks local endpoints and reports which nodes can support the flow."
+    },
+    {
+      "source": "hapa-lance-node",
+      "target": "hapa-node-space",
+      "layer": "DATA",
+      "label": "Retrieved context can return to Node Space as a richer scenario or content-production brief."
+    }
+  ],
+  "card": {
+    "verb": "AUTHOR",
+    "type": "Protocol Skill",
+    "rank": "Draft",
+    "grade": "B",
+    "description": "Use Node Space Desktop to turn a newly discovered multi-node process into a wiki protocol, animated scenario sidecar, flow card, and future content-production brief.",
+    "effect": "Trace the route, reveal each handoff, and create a protocol record for reuse.",
+    "risk": "Missing ownership or stale node state can make the route hard to reproduce.",
+    "stats": {
+      "impact": 7,
+      "reliability": 7,
+      "complexity": 6,
+      "cost": 4,
+      "speed": 6,
+      "teaching": 9
+    }
+  },
+  "wikiPath": "/Users/calderwong/Desktop/Hapa_Worldbuilding_Wiki/Operations/Flow Explainers/node-space-desktop-flow-authoring.md",
+  "jsonPath": "/Users/calderwong/Desktop/hapa/site/generated/protocol-flows/node-space-desktop-flow-authoring.json",
+  "createdAt": "2026-05-25T04:03:53.878Z"
+}

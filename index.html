@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hapa Node Atlas</title>
-    <link rel="stylesheet" href="styles.css?v=problem-section-20260605" />
+    <link rel="stylesheet" href="styles.css?v=node-space-3d-20260605" />
   </head>
   <body>
     <header class="topbar">
@@ -20,6 +20,7 @@
         <a href="#embeds">Embeds</a>
         <a href="#repos">GitHub</a>
         <a href="#node-swarm">Swarm</a>
+        <a href="#node-space-3d">3D</a>
         <a href="https://github.com/calderwong" target="_blank" rel="noreferrer">calderwong</a>
       </nav>
     </header>
@@ -33,7 +34,7 @@
             A brochure shell for the Hapa node constellation, embedding the first three public node surfaces and linking the wider public Hapa source map straight back to GitHub.
           </p>
           <div class="signal-row" aria-label="Site signals">
-            <span><i></i>3 node embeds</span>
+            <span><i></i>4 node embeds</span>
             <span><i></i>34 public Hapa repos linked</span>
             <span><i></i>local-first surfaces</span>
           </div>
@@ -259,7 +260,7 @@
               <img src="assets/node-icons/hapa/card.svg" alt="" loading="eager" decoding="async">
             </div>
             <h3>hapa</h3>
-            <p>Master Hapa ecosystem repo for operating model docs, node maps, protocol standards, site surfaces, and cross-node coordination.</p>
+            <p>Master Hapa ecosystem repo for Node Space, operating model docs, node maps, protocol standards, site surfaces, and cross-node coordination.</p>
             <a href="https://github.com/calderwong/hapa" target="_blank" rel="noreferrer">github.com/calderwong/hapa</a>
           </article>
           <article class="repo-card">
@@ -603,6 +604,35 @@
             <p id="dashInspectorBody">Active protocol flow data is loading from the .hapaDash export.</p>
             <div class="dash-inspector-meta" id="dashInspectorMeta"></div>
           </aside>
+        </div>
+      </section>
+
+      <section class="node-space-section" id="node-space-3d" aria-labelledby="node-space-title">
+        <div class="section-head">
+          <div>
+            <p class="micro">HAPA NODE SPACE / 3D FLOW PLAYBACK</p>
+            <h2 id="node-space-title">3D Node Space</h2>
+            <p class="repo-summary">The actual browser-safe Node Space renderer from the Hapa front-door repo, with animated scenario tubes, moving packets, formation controls, and flow cards.</p>
+          </div>
+          <div class="node-space-actions">
+            <a href="nodes/hapa-node-space/" target="_blank" rel="noreferrer">Open Fullscreen</a>
+            <a href="https://github.com/calderwong/hapa" target="_blank" rel="noreferrer">GitHub Source</a>
+          </div>
+        </div>
+
+        <div class="node-space-frame-shell">
+          <div class="node-space-frame-status" aria-label="3D Node Space embed status">
+            <span><i></i> Static GitHub Pages Embed</span>
+            <span>20 Flow Scenarios</span>
+            <span>Three.js Node Graph</span>
+          </div>
+          <iframe
+            class="node-space-iframe"
+            src="nodes/hapa-node-space/"
+            title="Hapa 3D Node Space with animated flow playback"
+            loading="lazy"
+            allow="autoplay; fullscreen"
+          ></iframe>
         </div>
       </section>
     </main>

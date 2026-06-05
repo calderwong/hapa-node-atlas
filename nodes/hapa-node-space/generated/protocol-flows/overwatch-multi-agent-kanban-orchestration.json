@@ -1,0 +1,113 @@
+{
+  "id": "overwatch-multi-agent-kanban-orchestration",
+  "name": "Overwatch Multi-Agent Kanban Orchestration",
+  "summary": "Coordinates Blue, Red, Green, Overwatch, and human operators through append-only Kanban, scoped Codex prompts, verification gates, and durable protocol writeback.",
+  "color": 16173148,
+  "createdAt": "2026-05-29T00:00:00-07:00",
+  "steps": [
+    {
+      "source": "Human",
+      "target": "Overwatch",
+      "layer": "UI",
+      "label": "The human names the shared MVP objective and asks for avatar-scoped Codex work.",
+      "explanation": [
+        "The human sets the priority and the definition of useful progress. In the Black Horizon run, the objective was an MVP where Hapa repositories become ships in an explorable Unity scene.",
+        "The goal is not to make every agent improvise from the whole universe. The goal is to give each avatar a lane, a task card, and a verification contract."
+      ]
+    },
+    {
+      "source": "Overwatch",
+      "target": "hapa-overwatch-kanban",
+      "layer": "DATA",
+      "label": "Overwatch creates task cards and communication events in an append-only project log.",
+      "explanation": [
+        "The board is a projection from durable events. Card creation, card moves, messages, blockers, and checkpoints all remain replayable.",
+        "This lets Overwatch later reconcile the board with live source truth rather than trusting stale column state."
+      ]
+    },
+    {
+      "source": "Overwatch",
+      "target": "Codex CLI",
+      "layer": "CLI",
+      "label": "Overwatch issues distinct prompts for Blue, Red, and Green with owned paths and acceptance checks.",
+      "explanation": [
+        "Blue, Red, and Green are operational avatars, not decorative labels. Each prompt names what to read, which paths are owned, what to avoid, and how to verify.",
+        "The pattern reduces collision risk and gives the human a readable work split."
+      ]
+    },
+    {
+      "source": "Blue",
+      "target": "Fleet Manifest",
+      "layer": "DATA",
+      "label": "Blue converts live Hapa repo facts into deterministic ship definitions and metrics snapshots.",
+      "explanation": [
+        "Blue owns truth and provenance. It inspects node-map rows, repo paths, git state, docs, manifests, and file metrics before producing game-facing data.",
+        "The result is a manifest Red and Green can consume without needing to know the scanner internals."
+      ]
+    },
+    {
+      "source": "Red",
+      "target": "Unity Scene",
+      "layer": "DATA|UI",
+      "label": "Red turns the manifest into a visible Black Horizon fleet scene.",
+      "explanation": [
+        "Red owns the forge layer: scene, orbit lanes, visual class treatments, labels, lighting, and Unity validation.",
+        "The scene should make the relationship legible: repository state becomes ship class, stats, status, rooms, duties, and orbit behavior."
+      ]
+    },
+    {
+      "source": "Green",
+      "target": "Interaction Layer",
+      "layer": "DATA|UI",
+      "label": "Green makes the scene playable and phone-ready through semantic commands and safe duty-card hooks.",
+      "explanation": [
+        "Green owns the operator loop. Input commands should be semantic so keyboard, mouse, and later phone/WebSocket events can share the same route.",
+        "The first duty-card action should be safe and teachable, such as Telemetry Patrol."
+      ]
+    },
+    {
+      "source": "Agents",
+      "target": "Overwatch Kanban",
+      "layer": "CLI|API",
+      "label": "Agents append progress, blockers, handoffs, and verification notes to the shared project record.",
+      "explanation": [
+        "Agent work is only useful if the next operator can see what happened and why. Appending events keeps progress visible across terminals, context resets, and future reviews.",
+        "Blocks are not failures; silent blocks are the failure."
+      ]
+    },
+    {
+      "source": "Overwatch",
+      "target": "Hapa Protocol Registry",
+      "layer": "DATA",
+      "label": "Overwatch promotes the proven coordination pattern into wiki, Second Brain, process cards, and generated sidecars.",
+      "explanation": [
+        "Once the pattern proves useful, it becomes Hapa infrastructure. Future agents can retrieve it as a named protocol instead of rediscovering the same coordination shape.",
+        "The record names what is verified, what is inferred, what remains blocked, and where the durable evidence lives."
+      ]
+    }
+  ],
+  "card": {
+    "verb": "ORCHESTRATE",
+    "type": "Multi-Agent Operations",
+    "rank": "Legendary",
+    "grade": "A",
+    "description": "Coordinates multiple Codex avatar threads toward one Hapa objective through append-only Kanban, scoped prompts, verification gates, and Overwatch reconciliation.",
+    "effect": "Allows Hapa to run Blue/Red/Green-style parallel work without losing provenance, blockers, or integration truth.",
+    "risk": "If agents do not append progress or Overwatch fails to verify claims against live files/endpoints, the board can drift from reality.",
+    "stats": {
+      "impact": 10,
+      "reliability": 8,
+      "complexity": 7,
+      "cost": 4,
+      "speed": 8,
+      "teaching": 10
+    }
+  },
+  "wikiPath": "/Users/calderwong/Desktop/Hapa_Worldbuilding_Wiki/Operations/Flow Explainers/Overwatch Multi-Agent Kanban Orchestration.md",
+  "recordRule": {
+    "coordination": "hapa-overwatch-kanban append-only event log",
+    "implementation": "owning node repositories and Unity scene files",
+    "canon": "Hapa Worldbuilding Wiki after review",
+    "retrieval": "Hapa Second Brain skill evidence and enrichment notes"
+  }
+}

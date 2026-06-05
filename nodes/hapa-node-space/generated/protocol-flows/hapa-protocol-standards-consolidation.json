@@ -1,0 +1,76 @@
+{
+  "id": "hapa-protocol-standards-consolidation",
+  "name": "Hapa Protocol Standards Consolidation",
+  "summary": "Consolidates Hapa's UI, API, CLI, testing, documentation, inter-node, agent, Second Brain, Hermes, avatar, and Love/Truth/Conviction standards into one reusable operating contract.",
+  "color": 428962,
+  "createdAt": "2026-05-27T10:31:16-07:00",
+  "steps": [
+    {
+      "source": "hapa-dev-proto",
+      "target": "Hapa Protocol Standards",
+      "layer": "DATA",
+      "label": "Reference docs and app code provide API, validation, topology, UI, and Love/Truth/Conviction standards.",
+      "explanation": "hapa-dev-proto carries the local debug API, cluster topology, validation discipline, parity spine cards, and the Love/Truth/Conviction framing that anchors the protocol stack."
+    },
+    {
+      "source": "Hapa Wiki",
+      "target": "Hapa Protocol Standards",
+      "layer": "DATA",
+      "label": "Canon pages provide node app standards, Overwatch practices, Flow Explainer rules, and wiki schema.",
+      "explanation": "The wiki turns scattered operating notes into durable pages with statuses, frontmatter, source links, failure modes, and future story mechanics."
+    },
+    {
+      "source": "Hapa Second Brain",
+      "target": "Hapa Protocol Standards",
+      "layer": "API|CLI|DATA",
+      "label": "Second Brain defines context, sharpening, sync, lineage, agents, node skills, and capability bridge standards.",
+      "explanation": "The retrieval layer is not just search. It records context purpose, fit, feedback, creation lineage, agent notes, node-space activity, and deployment opportunities."
+    },
+    {
+      "source": "Hermes",
+      "target": "Hapa Protocol Standards",
+      "layer": "API|CLI|UI",
+      "label": "Hermes contributes long-running agent and harness standards.",
+      "explanation": "Hermes profiles, skills, memory, schedules, gateways, tools, and backups set expectations for delegated agent work with explicit capability and writeback checks."
+    },
+    {
+      "source": "Hapa Avatars",
+      "target": "Hapa Protocol Standards",
+      "layer": "DATA|API",
+      "label": "Avatar nodes contribute identity, lineage, generated interpretation, and 3D prep standards.",
+      "explanation": "Avatar work must preserve source media, generated variants, reviewed facts, lineage manifests, and Trellis-safe source decisions before downstream production."
+    },
+    {
+      "source": "Hapa Protocol Standards",
+      "target": "Node Space",
+      "layer": "DATA",
+      "label": "The standard becomes a generated protocol-flow JSON and registry entry.",
+      "explanation": "App storage makes the standard discoverable in Node Space and available to future flow explainers."
+    },
+    {
+      "source": "Hapa Protocol Standards",
+      "target": "Second Brain",
+      "layer": "DATA",
+      "label": "The standard becomes an indexed article and enrichment target.",
+      "explanation": "Second Brain can now retrieve, connect, and redeploy the consolidated standard in later Hapa work."
+    }
+  ],
+  "card": {
+    "verb": "STANDARDIZE",
+    "type": "Protocol Consolidation",
+    "rank": "Legendary",
+    "grade": "A",
+    "description": "Turns scattered Hapa operating rules into one source-linked standards spine.",
+    "effect": "Future node work can inherit UI/API/CLI parity, validation output, documentation, interoperability, agent, avatar, and sharpening expectations.",
+    "risk": "Standards that are not enforced can become lore-only. Each active node still needs a parity check and gap ticket.",
+    "stats": {
+      "love": 9,
+      "truth": 10,
+      "conviction": 9,
+      "parity": 9,
+      "interoperability": 8
+    }
+  },
+  "wikiPath": "/Users/calderwong/Desktop/Hapa_Worldbuilding_Wiki/Operations/Flow Explainers/Hapa Protocol Standards Consolidation.md"
+}
+

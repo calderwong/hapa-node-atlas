@@ -1,6 +1,6 @@
 # Hapa Node Atlas
 
-Static brochure site for the public Hapa node constellation. It embeds the first three node surfaces and links the broader public Hapa source map directly to GitHub.
+Static brochure site for the public Hapa node constellation. It embeds the first three core node surfaces, the 3D Hapa Node Space graph, and the wider public Hapa source map.
 
 ## Demo
 
@@ -11,6 +11,7 @@ Static brochure site for the public Hapa node constellation. It embeds the first
 - Hapa Character Sheet
 - Hapa Second Brain
 - Hapa Dev Proto
+- Hapa Node Space 3D graph and flow playback
 - Public Hapa repository index with dashboard-generated node thumbnails
 
 ## Local Preview

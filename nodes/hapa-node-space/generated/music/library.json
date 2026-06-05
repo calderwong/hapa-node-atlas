@@ -1,0 +1,104 @@
+{
+  "source": "hapa-song-registry",
+  "sourcePath": "/Users/calderwong/Desktop/hapa-song-registry/data/registry.json",
+  "libraryCount": 1666,
+  "snapshot": "2026-05-24 node-space music mode seed",
+  "tracks": [
+    {
+      "id": "b0ed4fb1",
+      "title": "Queen of the Card Garden",
+      "artist": "Hapa Song Registry",
+      "duration": 227.84,
+      "model": "chirp-crow v5",
+      "theme": "card garden anthem",
+      "accent": "#fbbf24",
+      "energy": "bounce",
+      "src": "generated/music/queen-card-garden-b0ed4fb1.mp3",
+      "tags": "Upbeat reggae hip-hop fusion, funky twang, warm dub bass, card garden lore."
+    },
+    {
+      "id": "5c6a01cd",
+      "title": "You Heard Me Hummin'",
+      "artist": "Hapa Song Registry",
+      "duration": 117.52,
+      "model": "chirp-crow v5",
+      "theme": "protocol love ballad",
+      "accent": "#67e8f9",
+      "energy": "soft pulse",
+      "src": "generated/music/you-heard-me-hummin-5c6a01cd.mp3",
+      "tags": "Melancholic ballad, sparse emotional instrumentation, Hapa protocol memory."
+    },
+    {
+      "id": "4cdff6f4",
+      "title": "Keepin' It Movin' (Even If)",
+      "artist": "Hapa Song Registry",
+      "duration": 150.92,
+      "model": "chirp-crow v5",
+      "theme": "builder groove",
+      "accent": "#86efac",
+      "energy": "steady",
+      "src": "generated/music/keepin-it-movin-4cdff6f4.mp3",
+      "tags": "Laid-back groove-hop for builders, resilience, motion, and repair work."
+    },
+    {
+      "id": "8c6ac981",
+      "title": "Sunlit Warqueen (Mimi Battle Mode)",
+      "artist": "Hapa Song Registry",
+      "duration": 189.92,
+      "model": "chirp-crow v5",
+      "theme": "battle commander",
+      "accent": "#f472b6",
+      "energy": "battle",
+      "src": "generated/music/sunlit-warqueen-8c6ac981.mp3",
+      "tags": "Hyper-modern battle anthem, commander energy, radiant tactical swagger."
+    },
+    {
+      "id": "b60f8490",
+      "title": "The Gospel According to Sacred Dirt",
+      "artist": "Hapa Song Registry",
+      "duration": 92.2,
+      "model": "chirp-crow v5",
+      "theme": "sacred ground",
+      "accent": "#c084fc",
+      "energy": "surge",
+      "src": "generated/music/sacred-dirt-b60f8490.mp3",
+      "tags": "Hapa gospel pressure, ritual pulse, canon-as-ground memory."
+    },
+    {
+      "id": "892ead59",
+      "title": "Campfire Lullaby",
+      "artist": "Hapa Song Registry",
+      "duration": 166.2,
+      "model": "chirp-fenix v5.5",
+      "theme": "campfire ocean dusk",
+      "accent": "#fb7185",
+      "energy": "ember",
+      "src": "generated/music/campfire-lullaby-892ead59.mp3",
+      "tags": "Dreamlike campfire, ocean air, guitar strums, saxophone, slow pulse."
+    },
+    {
+      "id": "2efd1266",
+      "title": "Read Receipts for Elaine x 11:23 Live Node",
+      "artist": "Hapa Song Registry",
+      "duration": 101.28,
+      "model": "chirp-fenix v5.5",
+      "theme": "live node receipt",
+      "accent": "#38bdf8",
+      "energy": "ambient drive",
+      "src": "generated/music/read-receipts-2efd1266.mp3",
+      "tags": "Post-rock cinematic ballad, bowed swells, live node memory, ambient motion."
+    },
+    {
+      "id": "dc8fd11f",
+      "title": "Pipa & Bass in the Card Garden",
+      "artist": "Hapa Song Registry",
+      "duration": 299.04,
+      "model": "chirp-crow v5",
+      "theme": "traditional future bass",
+      "accent": "#5eead4",
+      "energy": "wide spectrum",
+      "src": "generated/music/pipa-bass-card-garden-dc8fd11f.mp3",
+      "tags": "Pipa, guzheng, erhu, future bass, trap elements, card garden fusion."
+    }
+  ]
+}

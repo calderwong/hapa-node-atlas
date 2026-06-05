@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hapa 3D Node Space</title>
+  <meta name="description" content="Local 3D visualization of Hapa nodes, interfaces, and maintenance flows." />
+  <meta name="theme-color" content="#020617" />
+  <link rel="stylesheet" href="node-space.css?v=20260524-23" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="node-space-app" aria-label="Hapa 3D Node Space">
+    <section class="scene-shell" aria-label="3D node visualization">
+      <video
+        id="blackHoleBackground"
+        class="scene-video-background"
+        src="generated/backgrounds/black-hole-background.mp4"
+        preload="metadata"
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+      ></video>
+      <div id="sceneRoot" class="scene-root"></div>
+      <div class="scene-vignette" aria-hidden="true"></div>
+      <div class="scene-scanlines" aria-hidden="true"></div>
+    </section>
+
+    <header class="space-topbar">
+      <a class="brand" href="../../#node-space-3d" target="_top" aria-label="Back to Hapa Node Atlas">
+        <span class="brand-mark">H</span>
+        <span class="brand-copy"><b>Hapa Node Space</b><small>3D operating graph</small></span>
+      </a>
+      <div class="space-stats" aria-label="Graph telemetry">
+        <span><b id="nodeCount">0</b><small>nodes</small></span>
+        <span><b id="edgeCount">0</b><small>links</small></span>
+        <span><b id="selectedLayerCount">4</b><small>layers</small></span>
+        <span><b id="shipCount">0</b><small>ships</small></span>
+        <span><b id="sourceReadout">SEED</b><small>data source</small></span>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="toggleMusicMode" type="button" aria-pressed="false">Music</button>
+        <button class="icon-button" id="toggleArmadaMode" type="button" aria-pressed="false" title="Show Asset Viewer ships instead of node circles">Armada</button>
+        <button class="icon-button" id="toggleControlRail" type="button" aria-controls="controlDock" aria-expanded="true" aria-pressed="true" data-active="true">Controls</button>
+        <button class="icon-button" id="toggleInspectorRail" type="button" aria-controls="nodeInspector" aria-expanded="true" aria-pressed="true" data-active="true">Details</button>
+        <button class="icon-button" id="toggleSfx" type="button" aria-pressed="false">SFX On</button>
+        <a class="icon-button" href="../../#node-space-3d" target="_top" aria-label="Back to Hapa Node Atlas">Atlas</a>
+        <button class="icon-button" id="resetCamera" type="button" aria-label="Reset camera">Reset</button>
+      </div>
+    </header>
+
+    <aside class="control-dock" id="controlDock" data-open="true" aria-label="Node graph controls">
+      <label class="search-box">
+        <span>Search nodes</span>
+        <input id="nodeSearch" type="search" placeholder="hapa-dev-proto, cards, media..." autocomplete="off" />
+      </label>
+
+      <div class="control-grid" aria-label="Interface layers">
+        <label><input type="checkbox" name="layer" value="UI" checked /> <span>UI</span></label>
+        <label><input type="checkbox" name="layer" value="API" checked /> <span>API</span></label>
+        <label><input type="checkbox" name="layer" value="CLI" checked /> <span>CLI</span></label>
+        <label><input type="checkbox" name="layer" value="DATA" checked /> <span>Data</span></label>
+      </div>
+
+      <section class="formation-control" aria-labelledby="formationTitle">
+        <div class="formation-control-header">
+          <span id="formationTitle">Formation</span>
+          <b id="formationReadout">Constellation</b>
+        </div>
+        <div class="formation-buttons" role="radiogroup" aria-label="Node swarm formation">
+          <button class="formation-button" type="button" data-formation="ecosystem" aria-pressed="true" title="Constellation formation">
+            <i class="formation-icon formation-icon-map" aria-hidden="true"></i>
+            <span>Map</span>
+          </button>
+          <button class="formation-button" type="button" data-formation="ring" aria-pressed="false" title="Top-down command ring formation">
+            <i class="formation-icon formation-icon-ring" aria-hidden="true"></i>
+            <span>Ring</span>
+          </button>
+          <button class="formation-button" type="button" data-formation="layers" aria-pressed="false" title="Layer stack formation">
+            <i class="formation-icon formation-icon-stack" aria-hidden="true"></i>
+            <span>Stack</span>
+          </button>
+          <button class="formation-button" type="button" data-formation="lanes" aria-pressed="false" title="Signal lanes formation">
+            <i class="formation-icon formation-icon-lanes" aria-hidden="true"></i>
+            <span>Lanes</span>
+          </button>
+        </div>
+        <select id="layoutSelect" class="formation-native-select" aria-label="Node swarm formation">
+          <option value="ecosystem">Constellation</option>
+          <option value="ring">Command ring</option>
+          <option value="layers">Layer stack</option>
+          <option value="lanes">Signal lanes</option>
+        </select>
+      </section>
+
+      <section class="background-control" aria-labelledby="backgroundTitle">
+        <div class="background-control-header">
+          <span id="backgroundTitle">Background</span>
+          <b id="backgroundReadout">Grid</b>
+        </div>
+        <div class="background-buttons" role="radiogroup" aria-label="Scene background">
+          <button class="background-button" type="button" data-background="grid" aria-pressed="true" title="Operator grid background">
+            <i class="background-icon background-icon-grid" aria-hidden="true"></i>
+            <span>Grid</span>
+          </button>
+          <button class="background-button" type="button" data-background="stars" aria-pressed="false" title="Star drift background">
+            <i class="background-icon background-icon-stars" aria-hidden="true"></i>
+            <span>Stars</span>
+          </button>
+          <button class="background-button" type="button" data-background="aurora" aria-pressed="false" title="Aurora field background">
+            <i class="background-icon background-icon-aurora" aria-hidden="true"></i>
+            <span>Aurora</span>
+          </button>
+          <button class="background-button" type="button" data-background="warp" aria-pressed="false" title="Warp tunnel background">
+            <i class="background-icon background-icon-warp" aria-hidden="true"></i>
+            <span>Warp</span>
+          </button>
+          <button class="background-button" type="button" data-background="lattice" aria-pressed="false" title="Audio mesh background">
+            <i class="background-icon background-icon-lattice" aria-hidden="true"></i>
+            <span>Audio</span>
+          </button>
+          <button class="background-button" type="button" data-background="blackhole" aria-pressed="false" title="Black hole video loop">
+            <i class="background-icon background-icon-blackhole" aria-hidden="true"></i>
+            <span>Hole</span>
+          </button>
+          <button class="background-button" type="button" data-background="cosmos" aria-pressed="false" title="Solar system, stars, and nebula background">
+            <i class="background-icon background-icon-cosmos" aria-hidden="true"></i>
+            <span>Cosmos</span>
+          </button>
+        </div>
+        <select id="backgroundSelect" class="background-native-select" aria-label="Scene background">
+          <option value="grid">Grid</option>
+          <option value="stars">Star drift</option>
+          <option value="aurora">Aurora field</option>
+          <option value="warp">Warp tunnel</option>
+          <option value="lattice">Audio mesh</option>
+          <option value="blackhole">Black hole loop</option>
+          <option value="cosmos">Solar system</option>
+        </select>
+      </section>
+
+      <div class="select-row select-row-compact">
+        <label>
+          <span>Focus</span>
+          <select id="focusSelect">
+            <option value="all">All groups</option>
+            <option value="core">Core</option>
+            <option value="memory">Memory</option>
+            <option value="media">Media</option>
+            <option value="trust">Trust</option>
+            <option value="surface">Surface</option>
+            <option value="app">Apps</option>
+            <option value="ops">Ops</option>
+          </select>
+        </label>
+        <label>
+          <span>Labels</span>
+          <select id="labelSelect">
+            <option value="key">Key</option>
+            <option value="all">All</option>
+            <option value="selected">Selected</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="dock-actions">
+        <button id="openImport" type="button">Import Sheet</button>
+        <button id="resetData" type="button">Reset Seed</button>
+      </div>
+
+      <section class="desktop-bridge" id="desktopBridge" hidden aria-label="Local desktop bridge">
+        <div class="desktop-bridge-header">
+          <div>
+            <p class="eyebrow"><span></span> DESKTOP BRIDGE</p>
+            <h2>Local Hapa Record</h2>
+          </div>
+          <span id="desktopBridgeStatus">Offline</span>
+        </div>
+        <div class="desktop-bridge-stats">
+          <button type="button" id="openWikiRoot" title="Open the full Hapa wiki folder">
+            <b id="desktopWikiCount">0</b><small>wiki pages</small>
+          </button>
+          <button type="button" id="openSongRoot" title="Open the full Hapa song library folder">
+            <b id="desktopSongCount">0</b><small>songs</small>
+          </button>
+          <button type="button" id="openDevProtoRoot" title="Open hapa-dev-proto">
+            <b id="desktopNodeCount">0</b><small>nodes</small>
+          </button>
+          <button type="button" id="openAssetViewerRoot" title="Open the Hapa Asset Viewer workspace">
+            <b id="desktopShipCount">0</b><small>ships</small>
+          </button>
+        </div>
+        <div class="desktop-bridge-actions">
+          <button type="button" id="refreshDesktopBridge">Refresh</button>
+          <button type="button" id="checkLocalServices">Ping Nodes</button>
+          <button type="button" id="openFlowExplainer">Make Flow + Explainer</button>
+        </div>
+        <p id="desktopBridgeLog">Waiting for desktop bridge.</p>
+      </section>
+
+      <section class="scenario-play-prompt" id="scenarioPlayPrompt" data-visible="false" aria-live="polite">
+        <div>
+          <p><span></span> SELECTED FLOW</p>
+          <h3 id="scenarioPromptTitle">Flow ready</h3>
+          <small id="scenarioPromptSummary">Pick a scenario to stage playback.</small>
+        </div>
+        <button id="scenarioPromptPlay" type="button">Play</button>
+      </section>
+
+      <section class="scenario-dock" id="scenarioDock" data-open="true" aria-hidden="false" aria-label="Animated process scenarios">
+        <div class="scenario-header">
+          <div>
+            <p class="eyebrow"><span></span> PROCESS PLAYBACK</p>
+            <h2>Flow Scenarios</h2>
+          </div>
+          <div class="scenario-header-actions">
+            <span class="scenario-status" id="scenarioStatus">Idle</span>
+          </div>
+        </div>
+        <label class="scenario-picker scenario-select-fallback">
+          <span>Scenario</span>
+          <select id="scenarioSelect"></select>
+        </label>
+        <div class="scenario-card-menu" id="scenarioCardMenu" role="listbox" aria-label="Flow scenario cards"></div>
+        <section class="flow-card-panel" aria-label="Selected Hapa flow card">
+          <div class="flow-card-header">
+            <div>
+              <p class="eyebrow"><span></span> FLOW CARD</p>
+              <h3 id="flowCardName">Flow skill</h3>
+            </div>
+            <div class="flow-card-rank">
+              <b id="flowCardGrade">A</b>
+              <small id="flowCardRank">Rare</small>
+            </div>
+          </div>
+          <button class="flow-action-button" id="flowActionButton" type="button" aria-label="Open selected flow action image">
+            <img id="flowActionImage" alt="" loading="lazy" />
+            <span id="flowCardVerb">Action</span>
+          </button>
+          <div class="flow-card-meta">
+            <span id="flowCardType">Skill</span>
+            <span id="flowCardCost">Cost 0</span>
+            <span id="flowCardNodeCount">0 nodes</span>
+          </div>
+          <p id="flowCardDescription" class="flow-card-description"></p>
+          <div class="flow-card-stats" id="flowCardStats"></div>
+          <div class="flow-card-ability-grid">
+            <section>
+              <h4>Effect</h4>
+              <p id="flowCardEffect"></p>
+            </section>
+            <section>
+              <h4>Risk</h4>
+              <p id="flowCardRisk"></p>
+            </section>
+          </div>
+        </section>
+        <label class="scenario-toggle">
+          <input id="cinematicMode" type="checkbox" checked />
+          <span><b>Cinematic</b><small>dim off-route nodes and follow packets</small></span>
+        </label>
+        <div class="scenario-actions">
+          <button id="playScenario" type="button">Play</button>
+          <button id="pauseScenario" type="button">Pause</button>
+          <button id="resetScenario" type="button">Reset</button>
+        </div>
+        <div class="scenario-meter" aria-label="Scenario progress"><i id="scenarioProgress"></i></div>
+        <p id="scenarioSummary" class="scenario-summary">Pick a Hapa workflow and watch the packets move.</p>
+        <section class="scenario-voiceover" id="scenarioVoiceover" data-state="idle" aria-label="Flow voiceover signal">
+          <audio id="scenarioVoiceAudio" preload="metadata" crossorigin="anonymous"></audio>
+          <div class="scenario-voiceover-top">
+            <p class="eyebrow"><span></span> DRAMABOX VOICEOVER</p>
+            <small id="scenarioVoiceStatus">Queue idle</small>
+          </div>
+          <canvas id="scenarioVoiceWaveform" width="320" height="54" aria-hidden="true"></canvas>
+          <div class="scenario-voiceover-meter">
+            <span><b id="scenarioVoiceEnergy">00</b><small>signal</small></span>
+            <span><b id="scenarioVoiceTime">0:00</b><small>time</small></span>
+          </div>
+        </section>
+        <section class="scenario-explanation" aria-live="polite" aria-label="Current flow step explanation">
+          <p class="eyebrow"><span></span> BLUE ARCHITECT STEP</p>
+          <h3 id="scenarioStepTitle">Step narration</h3>
+          <div id="scenarioStepExplanation" class="scenario-explanation-body"></div>
+        </section>
+        <ol id="scenarioSteps" class="scenario-steps"></ol>
+      </section>
+    </aside>
+
+    <section class="music-widget" id="musicWidget" data-playing="false" data-collapsed="false" aria-label="Hapa music library player">
+      <audio id="musicAudio" preload="metadata"></audio>
+      <div class="music-art" id="musicArt" aria-hidden="true">
+        <i></i><span></span>
+      </div>
+      <div class="music-core">
+        <div class="music-title-row">
+          <div>
+            <p class="eyebrow"><span></span> HAPA MUSIC CANON</p>
+            <h2 id="musicTitle">Loading library</h2>
+          </div>
+          <div class="music-title-actions">
+            <button class="music-collapse-button" id="musicCollapseButton" type="button" aria-expanded="true">Min</button>
+            <button class="music-mode-button" id="musicModeButton" type="button" aria-pressed="false">Mode</button>
+          </div>
+        </div>
+        <p id="musicMeta" class="music-meta">Song registry snapshot</p>
+        <div class="music-controls">
+          <button id="musicPrev" type="button" aria-label="Previous track">Prev</button>
+          <button id="musicPlay" type="button" aria-label="Play selected track">Play</button>
+          <button id="musicNext" type="button" aria-label="Next track">Next</button>
+          <select id="musicSelect" aria-label="Select Hapa song"></select>
+        </div>
+        <div class="music-progress" aria-label="Track progress">
+          <i id="musicProgress"></i>
+        </div>
+        <div class="music-signal" aria-label="Audio signal telemetry">
+          <span><b id="musicBass">00</b><small>bass</small></span>
+          <span><b id="musicMid">00</b><small>mid</small></span>
+          <span><b id="musicTreble">00</b><small>air</small></span>
+          <span><b id="musicTime">0:00</b><small>time</small></span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="node-inspector" id="nodeInspector" data-open="true" aria-live="polite" aria-label="Selected node inspector">
+      <p class="eyebrow"><span></span> SELECTED NODE</p>
+      <h1 id="inspectorName">Hapa ecosystem</h1>
+      <p id="inspectorRole">Select a node to inspect UI, API, CLI, outputs, and maintenance responsibilities.</p>
+      <div class="inspector-badges" id="inspectorBadges"></div>
+      <section class="node-art-panel" aria-label="Generated node artwork">
+        <h2>Generated Node Visuals</h2>
+        <div class="node-art-grid">
+          <figure class="node-logo-card">
+            <img id="nodeLogoImage" alt="" loading="lazy" />
+            <figcaption>Logo</figcaption>
+          </figure>
+          <button class="node-infographic-button" id="nodeInfographicButton" type="button" aria-label="Open generated node infographic">
+            <img id="nodeInfographicImage" alt="" loading="lazy" />
+            <span>Infographic</span>
+          </button>
+        </div>
+      </section>
+      <section class="ship-card-panel" aria-label="Hapa spacecraft game card">
+        <div class="ship-card-header">
+          <div>
+            <h2>Spaceship Card</h2>
+            <h3 id="shipClassName">Fleet vessel</h3>
+          </div>
+          <span id="shipCardArchetype">Node craft</span>
+        </div>
+        <button class="ship-mock-button" id="shipMockButton" type="button" aria-label="Open generated ship mock">
+          <img id="shipMockImage" alt="" loading="lazy" />
+          <span>Ship mock</span>
+        </button>
+        <p id="shipDoctrine"></p>
+        <div class="ship-attributes" id="shipAttributes"></div>
+        <div class="ship-card-lists">
+          <section>
+            <h2>Skills</h2>
+            <ul id="shipSkills"></ul>
+          </section>
+          <section>
+            <h2>Specialties</h2>
+            <ul id="shipSpecialties"></ul>
+          </section>
+          <section>
+            <h2>Research</h2>
+            <ul id="shipResearch"></ul>
+          </section>
+        </div>
+      </section>
+      <section class="architect-panel" aria-label="Blue Architect description string">
+        <h2>Blue Architect Description</h2>
+        <p id="architectDescription"></p>
+      </section>
+      <section class="inspector-preview" aria-label="Selected node UI screenshot">
+        <button class="inspector-preview-button" id="inspectorPreviewButton" type="button" aria-label="Open selected node screenshot">
+          <img id="inspectorPreviewImage" alt="" loading="lazy" />
+          <span class="inspector-preview-chip" id="inspectorPreviewLabel">UI preview</span>
+          <span class="inspector-preview-expand" aria-hidden="true">Full</span>
+        </button>
+      </section>
+      <section class="node-kanban-panel" id="nodeKanbanPanel" aria-label="Selected node Kanban board">
+        <h2>Kanban Board</h2>
+        <p id="nodeKanbanSummary">Open the app-specific board for this node.</p>
+        <a class="node-kanban-link" id="nodeKanbanLink" href="http://127.0.0.1:5181/" target="_blank" rel="noreferrer">Open node Kanban</a>
+        <span id="nodeKanbanProject">project pending</span>
+      </section>
+      <section class="capability-panel">
+        <h2>Capabilities</h2>
+        <ul id="capabilityList"></ul>
+      </section>
+      <dl class="node-facts" id="nodeFacts"></dl>
+      <div class="inspector-columns">
+        <section>
+          <h2>Interfaces</h2>
+          <ul id="interfaceList"></ul>
+        </section>
+        <section>
+          <h2>Produces and Maintains</h2>
+          <ul id="outputList"></ul>
+        </section>
+      </div>
+      <section class="connection-list">
+        <h2>Active Links</h2>
+        <ul id="connectionList"></ul>
+      </section>
+    </aside>
+
+    <dialog class="sheet-dialog" id="sheetDialog" aria-labelledby="sheetImportTitle">
+      <form method="dialog" class="sheet-shell">
+        <div class="sheet-header">
+          <div>
+            <p class="eyebrow"><span></span> SHEET INGEST</p>
+            <h2 id="sheetImportTitle">Paste exported CSV or TSV</h2>
+          </div>
+          <button type="button" id="closeImport" aria-label="Close import panel">Close</button>
+        </div>
+        <textarea id="sheetText" spellcheck="false" placeholder="Paste rows from Google Sheets here. Columns can include node, role, UI, API, CLI, app columns, produces, maintains, path, status."></textarea>
+        <div class="file-row">
+          <input id="sheetFile" type="file" accept=".csv,.tsv,.txt" />
+          <span id="importStatus">Seeded from visible sheet rows and docs/NODE_MAP.md.</span>
+        </div>
+        <div class="dock-actions">
+          <button id="importSheet" type="button">Plot Sheet</button>
+          <button id="loadVisibleSeed" type="button">Load Visible Rows</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="flow-dialog" id="flowExplainerDialog" aria-labelledby="flowExplainerTitle">
+      <form method="dialog" class="flow-shell">
+        <div class="sheet-header">
+          <div>
+            <p class="eyebrow"><span></span> HAPA PROTOCOL</p>
+            <h2 id="flowExplainerTitle">Make a Flow + Explainer</h2>
+          </div>
+          <button type="button" id="closeFlowExplainer" aria-label="Close flow explainer panel">Close</button>
+        </div>
+        <div class="flow-form-grid">
+          <label>
+            <span>Flow name</span>
+            <input id="flowNameInput" type="text" placeholder="Atlas Healing Sweep" />
+          </label>
+          <label>
+            <span>Verb</span>
+            <input id="flowVerbInput" type="text" placeholder="HEAL" maxlength="16" />
+          </label>
+          <label class="flow-form-wide">
+            <span>Objective</span>
+            <textarea id="flowObjectiveInput" rows="2" placeholder="What this flow completes."></textarea>
+          </label>
+          <label class="flow-form-wide">
+            <span>Nodes</span>
+            <textarea id="flowNodesInput" rows="2" placeholder="Atlas, Library, hapa-lance-node, hapa-telemetry-node"></textarea>
+          </label>
+          <label class="flow-form-wide">
+            <span>Route script</span>
+            <textarea id="flowStepsInput" rows="6" placeholder="Library -> Atlas [DATA]: Ask which cards are missing media.&#10;Atlas -> hapa-media-node [API]: Dispatch image candidates."></textarea>
+          </label>
+          <label class="flow-form-wide">
+            <span>Blue Architect explainer</span>
+            <textarea id="flowExplainerInput" rows="5" placeholder="Write the narration that should become TTS later."></textarea>
+          </label>
+          <label>
+            <span>Card hooks</span>
+            <textarea id="flowCardHooksInput" rows="4" placeholder="Mechanics, effects, risks, failure states."></textarea>
+          </label>
+          <label>
+            <span>Production notes</span>
+            <textarea id="flowProductionNotesInput" rows="4" placeholder="Action image, TTS, card, docs, or future animation notes."></textarea>
+          </label>
+        </div>
+        <div class="file-row">
+          <span id="flowExplainerStatus">Writes to the wiki and protocol sidecar store.</span>
+        </div>
+        <div class="dock-actions">
+          <button id="saveFlowExplainer" type="button">Save Flow Protocol</button>
+          <button id="prefillCurrentFlow" type="button">Use Selected Flow</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="preview-dialog" id="previewDialog" aria-labelledby="previewDialogTitle">
+      <div class="preview-shell">
+        <div class="preview-header">
+          <div>
+            <p class="eyebrow"><span></span> UI PREVIEW</p>
+            <h2 id="previewDialogTitle">Selected node</h2>
+          </div>
+          <button type="button" id="closePreview" aria-label="Close preview">Close</button>
+        </div>
+        <img id="previewDialogImage" alt="" />
+      </div>
+    </dialog>
+  </main>
+
+  <script src="kanban-ingress.js?v=20260531"></script>
+  <script type="module" src="node-space.js?v=20260531-kanban"></script>
+</body>
+</html>

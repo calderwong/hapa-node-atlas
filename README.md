@@ -11,6 +11,7 @@ Static Atlas for the public Hapa ecosystem: a local-first AI and worldbuilding p
 - Hapa Character Sheet
 - Hapa Second Brain
 - Hapa Dev Proto
+- Overwatch Kanban board atlas with ecosystem and node-specific board snapshots
 - Hapa Node Space 3D graph and flow playback
 - Public Hapa repository index with dashboard-generated node thumbnails
 

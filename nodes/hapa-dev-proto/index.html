@@ -199,6 +199,13 @@
         height: 100%;
         object-fit: cover;
         opacity: 0.76;
+        transition: opacity 180ms ease, filter 180ms ease, transform 220ms ease;
+      }
+
+      .visual img.is-swapping {
+        opacity: 0.36;
+        filter: blur(2px) saturate(0.8);
+        transform: scale(1.012);
       }
 
       .visual::after {
@@ -401,9 +408,9 @@
         <div class="workspace">
           <section class="panel hero-panel">
             <div class="visual">
-              <img src="../../assets/hapa-lore-hero.png" alt="Hapa lore and worldbuilding visual." />
+              <img id="visualImage" src="../../assets/dev-proto-heroes/chat.jpg" alt="Multi-provider AI chat console with floating model panes and local-first operator rails." decoding="async" />
               <div class="visual-title">
-                <p class="micro">HAPA NODE DEV PROTOTYPE CATCHALL</p>
+                <p class="micro" id="visualKicker">HAPA NODE CHAT CONSOLE</p>
                 <h2 id="visualTitle">Multi-provider Chat</h2>
               </div>
             </div>
@@ -455,6 +462,9 @@
       const surfaces = {
         "Chat": {
           title: "Multi-provider Chat",
+          kicker: "HAPA NODE CHAT CONSOLE",
+          image: "../../assets/dev-proto-heroes/chat.jpg",
+          alt: "Multi-provider AI chat console with floating model panes and local-first operator rails.",
           summary: "Rich chat UI for Gemini, OpenAI, AIMLAPI, and local llama.cpp, with card extraction, attachments, browser preview responses, and handoff into the card library.",
           chips: ["Gemini Preview", "OpenAI Preview", "Llama Preview", "Cards"],
           tools: [
@@ -465,6 +475,9 @@
         },
         "Prototypes": {
           title: "Prototype Workshop",
+          kicker: "GENERATIVE INTERFACE WORKBENCH",
+          image: "../../assets/dev-proto-heroes/prototypes.jpg",
+          alt: "Prototype workshop with generated interface blueprints, browser previews, and routing lanes.",
           summary: "Scratchpad surface for generating, saving, inspecting, and routing prototype HTML into Hapa card and app flows.",
           chips: ["HTML", "Gemini", "Preview", "Archive"],
           tools: [
@@ -475,6 +488,9 @@
         },
         "Hapa Forge": {
           title: "Hapa Forge",
+          kicker: "AVATAR MEDIA ASSET FORGE",
+          image: "../../assets/dev-proto-heroes/hapa-forge.jpg",
+          alt: "Hapa Forge workstation with avatar, media, card composition, and glowing asset lineage.",
           summary: "Creative forge for avatar, media, card, and derivative asset composition across local and hosted generation lanes.",
           chips: ["Avatar", "Media", "Forge", "Lineage"],
           tools: [
@@ -485,6 +501,9 @@
         },
         "Card Library": {
           title: "Card Library",
+          kicker: "CARD INDEX MEDIA VAULT",
+          image: "../../assets/dev-proto-heroes/card-library.jpg",
+          alt: "Scrollable card library with holographic cards, media thumbnails, and status panels.",
           summary: "Scrollable card index with media hydration, status badges, paging, details, and links into 3D Nexus and wiki views.",
           chips: ["Cards", "Media", "Details", "Paging"],
           tools: [
@@ -495,6 +514,9 @@
         },
         "3D Nexus": {
           title: "3D Nexus",
+          kicker: "SPATIAL CARD CONSTELLATION",
+          image: "../../assets/dev-proto-heroes/3d-nexus.jpg",
+          alt: "3D Nexus card constellation with glowing relationship edges and inspection panels.",
           summary: "Card constellation viewer with local and global modes, relationship edges, search filtering, and camera presets.",
           chips: ["Three.js", "Constellation", "Cards", "Edges"],
           tools: [
@@ -505,6 +527,9 @@
         },
         "Wormhole": {
           title: "Wormhole Pipeline",
+          kicker: "MULTI-STAGE PROCESSING PIPELINE",
+          image: "../../assets/dev-proto-heroes/wormhole.jpg",
+          alt: "Wormhole pipeline with staged processing lanes moving source material into generated outputs.",
           summary: "Card processing pipeline for summaries, key terms, transcription, wiki updates, and artifact generation.",
           chips: ["Pipeline", "Summary", "Key Terms", "Wiki"],
           tools: [
@@ -515,6 +540,9 @@
         },
         "Wiki": {
           title: "Wiki Browser",
+          kicker: "NEURAL ARCHIVE BROWSER",
+          image: "../../assets/dev-proto-heroes/wiki.jpg",
+          alt: "Wiki browser with neural archive pages, linked knowledge terms, and source panels.",
           summary: "Neural archive surface for browsing generated terms, definitions, pages, and cross-card knowledge links.",
           chips: ["Wiki", "Terms", "Definitions", "Search"],
           tools: [
@@ -525,6 +553,9 @@
         },
         "Local Llama": {
           title: "Local Llama",
+          kicker: "LOCAL MODEL CONTROL ROOM",
+          image: "../../assets/dev-proto-heroes/local-llama.jpg",
+          alt: "Local Llama control room with server racks, GGUF model cards, and telemetry dashboards.",
           summary: "Control panel for configuring llama.cpp paths, model directories, local GGUF files, downloads, and server state.",
           chips: ["Local AI", "GGUF", "llama.cpp", "Models"],
           tools: [
@@ -535,6 +566,9 @@
         },
         "P2P Network": {
           title: "P2P Hypercore Manager",
+          kicker: "HYPERCORE PEER NETWORK",
+          image: "../../assets/dev-proto-heroes/p2p-network.jpg",
+          alt: "P2P hypercore network with peer nodes, append-only logs, and synchronized ledgers.",
           summary: "Experimental Hypercore and Hyperswarm surface for creating cores, appending entries, joining logs, and syncing records.",
           chips: ["Hypercore", "Hyperswarm", "P2P", "Logs"],
           tools: [
@@ -547,18 +581,37 @@
 
       const buttons = [...document.querySelectorAll(".nav button")];
       const activeTitle = document.querySelector("#activeTitle");
+      const visualImage = document.querySelector("#visualImage");
+      const visualKicker = document.querySelector("#visualKicker");
       const visualTitle = document.querySelector("#visualTitle");
       const summary = document.querySelector("#summary");
       const chips = document.querySelector("#chips");
       const toolGrid = document.querySelector("#toolGrid");
+
+      Object.values(surfaces).forEach((surface) => {
+        const image = new Image();
+        image.src = surface.image;
+      });
 
       function setMode(mode) {
         const surface = surfaces[mode];
         if (!surface) return;
         buttons.forEach((button) => button.classList.toggle("active", button.dataset.mode === mode));
         activeTitle.textContent = mode;
+        visualKicker.textContent = surface.kicker;
         visualTitle.textContent = surface.title;
         summary.textContent = surface.summary;
+        if (visualImage.getAttribute("src") !== surface.image) {
+          visualImage.classList.add("is-swapping");
+          window.setTimeout(() => {
+            visualImage.src = surface.image;
+            visualImage.alt = surface.alt;
+            visualImage.addEventListener("load", () => visualImage.classList.remove("is-swapping"), { once: true });
+          }, 80);
+        } else {
+          visualImage.alt = surface.alt;
+          visualImage.classList.remove("is-swapping");
+        }
         chips.innerHTML = surface.chips.map((chip) => `<span class="chip">${chip}</span>`).join("");
         toolGrid.innerHTML = surface.tools
           .map(([title, body]) => `<article class="tool"><h3>${title}</h3><p>${body}</p></article>`)

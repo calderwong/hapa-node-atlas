@@ -48,7 +48,7 @@ const nodes = {
       "Built renderer embed for chat, card library, wormhole, forge, wiki, local AI, 3D Nexus, P2P, and operator surfaces.",
     note:
       "This brochure-safe embed mirrors the public renderer surface. The full built renderer is vendored behind the Open action.",
-    frame: "nodes/hapa-dev-proto/index.html",
+    frame: "nodes/hapa-dev-proto/index.html?v=dev-proto-heroes-20260605",
     open: "nodes/hapa-dev-proto-renderer/index.html",
     repo: "https://github.com/calderwong/hapa-dev-proto",
     status: "dev sandbox preview online",

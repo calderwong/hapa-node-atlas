@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="./Paramation_Logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hapa-ag</title>
+  <!-- Set Astro icons path BEFORE any components load -->
+  <script>
+    window.RUX_ICONS_PATH = './icons/';
+    window.electronAPI = window.electronAPI || {
+      getSettings: async () => ({}),
+      getProfile: async () => ({
+        displayName: 'Hapa Operator',
+        persona: 'Browser preview bridge for the Hapa brochure embed.',
+      }),
+      getSystemStats: async () => ({ cards: 0, wikiEntries: 0, p2pCores: 0 }),
+      listGeminiModels: async () => [{ name: 'gemini-browser-preview', displayName: 'Gemini Preview' }],
+      listOpenAIModels: async () => [{ name: 'openai-browser-preview', displayName: 'OpenAI Preview' }],
+      listAimlApiModels: async () => [{ name: 'aimlapi-browser-preview', displayName: 'AIMLAPI Preview' }],
+      listLlamaModels: async () => [{ name: 'llama-browser-preview', displayName: 'Llama Preview' }],
+      listLlamaLocalModels: async () => [],
+      getLlamaSettings: async () => ({}),
+      getLlamaStatus: async () => ({ running: false }),
+      p2pRead: async () => [],
+      p2pCreateCore: async (name) => ({ name, key: 'browser-preview' }),
+      p2pAppend: async () => ({ ok: true }),
+      chatWithGemini: async (payload) => ({
+        content: 'Browser preview bridge active. Run the Electron app for live Gemini calls.',
+        model: payload?.model || 'gemini-browser-preview',
+        provider: 'gemini',
+      }),
+      chatWithOpenAI: async (payload) => ({
+        content: 'Browser preview bridge active. Run the Electron app for live OpenAI calls.',
+        model: payload?.model || 'openai-browser-preview',
+        provider: 'openai',
+      }),
+      chatWithAimlApi: async () => 'Browser preview bridge active. Run the Electron app for live AIMLAPI calls.',
+      chatWithLlama: async (payload) => ({
+        content: 'Browser preview bridge active. Run the Electron app with llama.cpp for local model calls.',
+        model: payload?.model || 'llama-browser-preview',
+        provider: 'llama',
+      }),
+    };
+  </script>
+  <!-- Load Astro components SYNCHRONOUSLY before React -->
+  <script src="./lib/gif.js"></script>
+  <script type="module" crossorigin src="./assets/index-XT7qcCgJ.js?brochure=2"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CveH43KR.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>

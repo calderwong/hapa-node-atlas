@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hapa Dev Proto Preview</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #020617;
+        --panel: rgba(9, 17, 31, 0.86);
+        --panel-2: rgba(15, 23, 42, 0.76);
+        --line: rgba(125, 211, 252, 0.26);
+        --text: #e5edf8;
+        --muted: #94a3b8;
+        --cyan: #22d3ee;
+        --fuchsia: #d946ef;
+        --amber: #f59e0b;
+        --green: #34d399;
+        --rose: #fb7185;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        background:
+          linear-gradient(rgba(34, 211, 238, 0.028) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(217, 70, 239, 0.022) 1px, transparent 1px),
+          linear-gradient(135deg, #020617, #030712 52%, #09111f);
+        background-size: 24px 24px, 24px 24px, auto;
+        color: var(--text);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .micro,
+      .chip,
+      .nav button,
+      .status,
+      .readout {
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .micro {
+        color: var(--muted);
+        font-size: 0.68rem;
+      }
+
+      .shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        border-right: 1px solid var(--line);
+        background: rgba(2, 6, 23, 0.7);
+        padding: 12px;
+        overflow-y: auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 52px;
+        margin-bottom: 12px;
+      }
+
+      .brand img {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+      }
+
+      .brand h1 {
+        font-size: 1.1rem;
+        letter-spacing: 0;
+      }
+
+      .nav {
+        display: grid;
+        gap: 7px;
+      }
+
+      .nav button {
+        min-height: 42px;
+        border: 1px solid rgba(125, 211, 252, 0.2);
+        border-radius: 8px;
+        background: rgba(9, 17, 31, 0.78);
+        color: #cbd5e1;
+        text-align: left;
+        padding: 0 10px;
+        cursor: pointer;
+        font-size: 0.66rem;
+      }
+
+      .nav button.active {
+        border-color: var(--cyan);
+        background: rgba(8, 47, 73, 0.72);
+        box-shadow: inset 3px 0 0 var(--cyan);
+      }
+
+      main {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        overflow: auto;
+      }
+
+      .topbar {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(2, 6, 23, 0.76);
+        position: sticky;
+        top: 0;
+        z-index: 3;
+      }
+
+      .topbar h2 {
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0 10px;
+        color: #bbf7d0;
+        background: rgba(15, 23, 42, 0.72);
+        font-size: 0.66rem;
+      }
+
+      .status i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 18px var(--green);
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+        overflow: hidden;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+        display: grid;
+        grid-template-rows: minmax(220px, 0.9fr) auto;
+      }
+
+      .visual {
+        position: relative;
+        overflow: hidden;
+        background: #020617;
+      }
+
+      .visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.76;
+      }
+
+      .visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, transparent 45%, rgba(2, 6, 23, 0.92)),
+          linear-gradient(90deg, rgba(34, 211, 238, 0.16), transparent 44%, rgba(217, 70, 239, 0.14));
+      }
+
+      .visual-title {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2;
+        display: grid;
+        gap: 8px;
+      }
+
+      .visual-title h2 {
+        font-size: clamp(1.6rem, 5vw, 3.2rem);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .panel-body {
+        padding: 14px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .summary {
+        color: #cbd5e1;
+        line-height: 1.58;
+        max-width: 78ch;
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        color: #bae6fd;
+        border: 1px solid rgba(125, 211, 252, 0.2);
+        border-radius: 999px;
+        background: rgba(8, 47, 73, 0.36);
+        padding: 6px 8px;
+        font-size: 0.62rem;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .tool {
+        min-height: 118px;
+        display: grid;
+        align-content: start;
+        gap: 8px;
+        border: 1px solid rgba(125, 211, 252, 0.16);
+        border-radius: 8px;
+        background: rgba(2, 6, 23, 0.52);
+        padding: 10px;
+      }
+
+      .tool h3 {
+        font-size: 0.95rem;
+      }
+
+      .tool p,
+      .side p {
+        color: var(--muted);
+        line-height: 1.42;
+      }
+
+      .side {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .readout {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        font-size: 0.66rem;
+      }
+
+      .readout div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 34px;
+        border: 1px solid rgba(125, 211, 252, 0.16);
+        border-radius: 8px;
+        padding: 8px;
+        background: rgba(2, 6, 23, 0.5);
+      }
+
+      .readout span {
+        color: var(--muted);
+      }
+
+      .readout strong {
+        color: #e5edf8;
+        text-align: right;
+      }
+
+      .flow {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+      }
+
+      .flow-step {
+        border-left: 3px solid var(--cyan);
+        border-radius: 0 8px 8px 0;
+        padding: 10px;
+        background: rgba(34, 211, 238, 0.07);
+      }
+
+      .flow-step:nth-child(2) {
+        border-color: var(--fuchsia);
+        background: rgba(217, 70, 239, 0.07);
+      }
+
+      .flow-step:nth-child(3) {
+        border-color: var(--amber);
+        background: rgba(245, 158, 11, 0.08);
+      }
+
+      @media (max-width: 980px) {
+        .shell,
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .nav {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav,
+        .tool-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="../../assets/paramation-logo.png" alt="" />
+          <div>
+            <p class="micro">HAPA-AG</p>
+            <h1>Dev Proto</h1>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Prototype surfaces">
+          <button class="active" data-mode="Chat">Chat</button>
+          <button data-mode="Prototypes">Prototypes</button>
+          <button data-mode="Hapa Forge">Hapa Forge</button>
+          <button data-mode="Card Library">Card Library</button>
+          <button data-mode="3D Nexus">3D Nexus</button>
+          <button data-mode="Wormhole">Wormhole</button>
+          <button data-mode="Wiki">Wiki</button>
+          <button data-mode="Local Llama">Local Llama</button>
+          <button data-mode="P2P Network">P2P Network</button>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="micro">ELECTRON / REACT / TYPESCRIPT SANDBOX</p>
+            <h2 id="activeTitle">Chat</h2>
+          </div>
+          <div class="status"><i></i><span>browser preview bridge</span></div>
+        </header>
+
+        <div class="workspace">
+          <section class="panel hero-panel">
+            <div class="visual">
+              <img src="../../assets/hapa-lore-hero.png" alt="Hapa lore and worldbuilding visual." />
+              <div class="visual-title">
+                <p class="micro">HAPA NODE DEV PROTOTYPE CATCHALL</p>
+                <h2 id="visualTitle">Multi-provider Chat</h2>
+              </div>
+            </div>
+            <div class="panel-body">
+              <p class="summary" id="summary">
+                Rich chat UI for Gemini, OpenAI, AIMLAPI, and local llama.cpp, with card extraction, attachments, browser preview responses, and handoff into the card library.
+              </p>
+              <div class="chips" id="chips">
+                <span class="chip">Gemini Preview</span>
+                <span class="chip">OpenAI Preview</span>
+                <span class="chip">Llama Preview</span>
+                <span class="chip">Cards</span>
+              </div>
+              <div class="tool-grid" id="toolGrid"></div>
+            </div>
+          </section>
+
+          <aside class="side">
+            <section class="panel">
+              <div class="readout">
+                <div><span>renderer</span><strong>dist-renderer vendored</strong></div>
+                <div><span>runtime</span><strong>browser safe</strong></div>
+                <div><span>electron bridge</span><strong>mocked</strong></div>
+                <div><span>repo</span><strong>hapa-dev-proto</strong></div>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="flow">
+                <div class="flow-step">
+                  <p class="micro">ingest</p>
+                  <strong>Chat, media, card, and prototype inputs</strong>
+                </div>
+                <div class="flow-step">
+                  <p class="micro">process</p>
+                  <strong>Wormhole, forge, wiki, local AI, and P2P flows</strong>
+                </div>
+                <div class="flow-step">
+                  <p class="micro">publish</p>
+                  <strong>Cards, node docs, visual assets, and operator panels</strong>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const surfaces = {
+        "Chat": {
+          title: "Multi-provider Chat",
+          summary: "Rich chat UI for Gemini, OpenAI, AIMLAPI, and local llama.cpp, with card extraction, attachments, browser preview responses, and handoff into the card library.",
+          chips: ["Gemini Preview", "OpenAI Preview", "Llama Preview", "Cards"],
+          tools: [
+            ["Provider Rail", "Switch between hosted and local model surfaces."],
+            ["Attachment Flow", "Images, video, and audio move into card records."],
+            ["Message Cards", "Useful turns become portable Hapa Cards."],
+          ],
+        },
+        "Prototypes": {
+          title: "Prototype Workshop",
+          summary: "Scratchpad surface for generating, saving, inspecting, and routing prototype HTML into Hapa card and app flows.",
+          chips: ["HTML", "Gemini", "Preview", "Archive"],
+          tools: [
+            ["Prompt Brief", "Describe a UI or artifact to generate."],
+            ["Preview Pane", "Review generated markup in place."],
+            ["Save Route", "Store selected prototypes into local records."],
+          ],
+        },
+        "Hapa Forge": {
+          title: "Hapa Forge",
+          summary: "Creative forge for avatar, media, card, and derivative asset composition across local and hosted generation lanes.",
+          chips: ["Avatar", "Media", "Forge", "Lineage"],
+          tools: [
+            ["Avatar Builder", "Shape character identity and generation requests."],
+            ["Media Controls", "Tune image and video options."],
+            ["Card Export", "Port outputs into the Hapa card library."],
+          ],
+        },
+        "Card Library": {
+          title: "Card Library",
+          summary: "Scrollable card index with media hydration, status badges, paging, details, and links into 3D Nexus and wiki views.",
+          chips: ["Cards", "Media", "Details", "Paging"],
+          tools: [
+            ["Index", "Fast page loading for large local collections."],
+            ["Details", "Inspect metadata, media, and lineage."],
+            ["Actions", "Open, route, and remix selected cards."],
+          ],
+        },
+        "3D Nexus": {
+          title: "3D Nexus",
+          summary: "Card constellation viewer with local and global modes, relationship edges, search filtering, and camera presets.",
+          chips: ["Three.js", "Constellation", "Cards", "Edges"],
+          tools: [
+            ["Local Mode", "Focus on parent, child, and sibling context."],
+            ["Global Mode", "Spiral view across the full library."],
+            ["Camera Presets", "Jump to focus, top, or wide views."],
+          ],
+        },
+        "Wormhole": {
+          title: "Wormhole Pipeline",
+          summary: "Card processing pipeline for summaries, key terms, transcription, wiki updates, and artifact generation.",
+          chips: ["Pipeline", "Summary", "Key Terms", "Wiki"],
+          tools: [
+            ["Ingest", "Drop or select source media and text."],
+            ["Process", "Run staged transformations."],
+            ["Emit", "Create wiki and card artifacts."],
+          ],
+        },
+        "Wiki": {
+          title: "Wiki Browser",
+          summary: "Neural archive surface for browsing generated terms, definitions, pages, and cross-card knowledge links.",
+          chips: ["Wiki", "Terms", "Definitions", "Search"],
+          tools: [
+            ["Term Index", "Scan concepts and related entries."],
+            ["Search", "Find generated knowledge quickly."],
+            ["Deep Links", "Route pages back to source cards."],
+          ],
+        },
+        "Local Llama": {
+          title: "Local Llama",
+          summary: "Control panel for configuring llama.cpp paths, model directories, local GGUF files, downloads, and server state.",
+          chips: ["Local AI", "GGUF", "llama.cpp", "Models"],
+          tools: [
+            ["Server", "Start, stop, and inspect local model status."],
+            ["Models", "List and select available GGUF files."],
+            ["Downloads", "Queue model downloads from URLs."],
+          ],
+        },
+        "P2P Network": {
+          title: "P2P Hypercore Manager",
+          summary: "Experimental Hypercore and Hyperswarm surface for creating cores, appending entries, joining logs, and syncing records.",
+          chips: ["Hypercore", "Hyperswarm", "P2P", "Logs"],
+          tools: [
+            ["Create", "Start named local cores."],
+            ["Append", "Write entries to selected logs."],
+            ["Sync", "Join and inspect shared records."],
+          ],
+        },
+      };
+
+      const buttons = [...document.querySelectorAll(".nav button")];
+      const activeTitle = document.querySelector("#activeTitle");
+      const visualTitle = document.querySelector("#visualTitle");
+      const summary = document.querySelector("#summary");
+      const chips = document.querySelector("#chips");
+      const toolGrid = document.querySelector("#toolGrid");
+
+      function setMode(mode) {
+        const surface = surfaces[mode];
+        if (!surface) return;
+        buttons.forEach((button) => button.classList.toggle("active", button.dataset.mode === mode));
+        activeTitle.textContent = mode;
+        visualTitle.textContent = surface.title;
+        summary.textContent = surface.summary;
+        chips.innerHTML = surface.chips.map((chip) => `<span class="chip">${chip}</span>`).join("");
+        toolGrid.innerHTML = surface.tools
+          .map(([title, body]) => `<article class="tool"><h3>${title}</h3><p>${body}</p></article>`)
+          .join("");
+      }
+
+      buttons.forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
+      setMode("Chat");
+    </script>
+  </body>
+</html>

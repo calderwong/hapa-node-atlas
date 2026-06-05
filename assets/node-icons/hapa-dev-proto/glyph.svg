@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title desc">
+  <title id="title">hapa-dev-proto node glyph icon</title>
+  <desc id="desc">glyph icon for hapa-dev-proto (existing_node). Category: agent. Symbol: chip.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="43%" r="68%">
+      <stop offset="0%" stop-color="#0f2742"/>
+      <stop offset="55%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="52%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="hsl(48 88% 62%)"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.8 0 0 0 0 1 0 0 0 .9 0" result="blueGlow"/>
+      <feMerge><feMergeNode in="blueGlow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#38bdf8" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="28" y="28" width="200" height="200" rx="44" fill="url(#bg)"/>
+  <rect x="28" y="28" width="200" height="200" rx="44" fill="url(#grid)" opacity=".7"/>
+  <rect x="33" y="33" width="190" height="190" rx="39" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".86"/>
+  <circle cx="128" cy="128" r="93" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="2 9" opacity=".4"/>
+  <circle cx="217.7" cy="152.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="186.2" cy="200.6" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="132.4" cy="220.9" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="77.0" cy="205.7" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="41.0" cy="160.9" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="38.3" cy="103.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="69.8" cy="55.4" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="123.6" cy="35.1" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="179.0" cy="50.3" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="215.0" cy="95.1" r="3.4" fill="#fbbf24" opacity=".75"/>
+  <g filter="url(#glow)">
+        <rect x="70" y="70" width="116" height="116" rx="18" fill="rgba(34,211,238,.08)" stroke="#a78bfa" stroke-width="9"/>
+        <rect x="99" y="99" width="58" height="58" rx="10" fill="none" stroke="#38bdf8" stroke-width="7"/>
+        <path d="M70 96H39M70 128H39M70 160H39M186 96h31M186 128h31M186 160h31M96 70V39M128 70V39M160 70V39M96 186v31M128 186v31M160 186v31" stroke="#a78bfa" stroke-width="6" stroke-linecap="round"/>
+        </g>
+  
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1024" height="1024" role="img" aria-labelledby="title desc">
+  <title id="title">Overwatch Knowledgebase Node node card icon</title>
+  <desc id="desc">card icon for Overwatch Knowledgebase Node (existing_node). Category: security. Symbol: shield.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="43%" r="68%">
+      <stop offset="0%" stop-color="#0f2742"/>
+      <stop offset="55%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="52%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="hsl(291 88% 62%)"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.8 0 0 0 0 1 0 0 0 .9 0" result="blueGlow"/>
+      <feMerge><feMergeNode in="blueGlow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#38bdf8" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="18" y="18" width="220" height="220" rx="32" fill="url(#bg)"/>
+  <rect x="18" y="18" width="220" height="220" rx="32" fill="url(#grid)" opacity=".7"/>
+  <rect x="23" y="23" width="210" height="210" rx="27" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".86"/>
+  <circle cx="128" cy="128" r="93" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="2 9" opacity=".4"/>
+  <circle cx="123.7" cy="220.9" r="3.4" fill="#fb7185" opacity=".75"/><circle cx="52.7" cy="182.6" r="3.4" fill="#fb7185" opacity=".75"/><circle cx="38.4" cy="103.2" r="3.4" fill="#fb7185" opacity=".75"/><circle cx="91.5" cy="42.4" r="3.4" fill="#fb7185" opacity=".75"/><circle cx="172.2" cy="46.1" r="3.4" fill="#fb7185" opacity=".75"/><circle cx="219.5" cy="111.5" r="3.4" fill="#fb7185" opacity=".75"/><circle cx="198.0" cy="189.3" r="3.4" fill="#fb7185" opacity=".75"/>
+  <g filter="url(#glow)">
+        <path d="M128 38 190 62v54c0 44-24 78-62 101-38-23-62-57-62-101V62Z" fill="rgba(34,211,238,.08)" stroke="#34d399" stroke-width="9" stroke-linejoin="round"/>
+        <path d="m96 128 22 22 45-55" fill="none" stroke="#22d3ee" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+  
+        <path d="M42 210h172" stroke="#34d399" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+        <circle cx="84" cy="210" r="5" fill="#34d399"/><circle cx="128" cy="210" r="5" fill="#22d3ee"/><circle cx="172" cy="210" r="5" fill="hsl(291 88% 62%)"/>
+        
+</svg>

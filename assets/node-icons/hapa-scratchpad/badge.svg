@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">Card Library Node node badge icon</title>
+  <desc id="desc">badge icon for Card Library Node (proposed_node). Category: memory. Symbol: memory.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="43%" r="68%">
+      <stop offset="0%" stop-color="#0f2742"/>
+      <stop offset="55%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="52%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="hsl(39 88% 62%)"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.8 0 0 0 0 1 0 0 0 .9 0" result="blueGlow"/>
+      <feMerge><feMergeNode in="blueGlow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#38bdf8" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="22" y="22" width="212" height="212" rx="32" fill="url(#bg)"/>
+  <rect x="22" y="22" width="212" height="212" rx="32" fill="url(#grid)" opacity=".7"/>
+  <rect x="27" y="27" width="202" height="202" rx="27" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".86"/>
+  <circle cx="128" cy="128" r="93" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="2 9" opacity=".4"/>
+  <circle cx="218.8" cy="148.0" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="184.7" cy="201.7" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="124.1" cy="220.9" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="65.3" cy="196.7" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="35.8" cy="140.3" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="49.5" cy="78.1" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="99.9" cy="39.3" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="163.5" cy="42.0" r="3.4" fill="#a78bfa" opacity=".75"/><circle cx="210.4" cy="84.9" r="3.4" fill="#a78bfa" opacity=".75"/>
+  <g filter="url(#glow)">
+        <path d="M75 69c0-22 106-22 106 0v118c0 22-106 22-106 0Z" fill="rgba(34,211,238,.08)" stroke="#60a5fa" stroke-width="8"/>
+        <path d="M75 69c0 22 106 22 106 0M75 108c0 22 106 22 106 0M75 148c0 22 106 22 106 0" fill="none" stroke="#60a5fa" stroke-width="6" opacity=".8"/>
+        <path d="M104 51 128 30l24 21M104 205l24 21 24-21" stroke="#facc15" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+  
+</svg>

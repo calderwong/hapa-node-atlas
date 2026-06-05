@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">hapa-song-registry node badge icon</title>
+  <desc id="desc">badge icon for hapa-song-registry (existing_node). Category: agent. Symbol: book.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="43%" r="68%">
+      <stop offset="0%" stop-color="#0f2742"/>
+      <stop offset="55%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="52%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="hsl(297 88% 62%)"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.8 0 0 0 0 1 0 0 0 .9 0" result="blueGlow"/>
+      <feMerge><feMergeNode in="blueGlow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#38bdf8" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="22" y="22" width="212" height="212" rx="32" fill="url(#bg)"/>
+  <rect x="22" y="22" width="212" height="212" rx="32" fill="url(#grid)" opacity=".7"/>
+  <rect x="27" y="27" width="202" height="202" rx="27" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".86"/>
+  <circle cx="128" cy="128" r="93" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="2 9" opacity=".4"/>
+  <circle cx="120.6" cy="220.7" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="50.9" cy="180.0" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="39.3" cy="100.2" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="94.4" cy="41.3" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="174.9" cy="47.7" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="220.0" cy="114.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="195.9" cy="191.6" r="3.4" fill="#fbbf24" opacity=".75"/>
+  <g filter="url(#glow)">
+        <path d="M60 54h56c18 0 28 9 28 25v124c-8-9-18-13-31-13H60Z" fill="rgba(34,211,238,.08)" stroke="#a78bfa" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M144 79c0-16 10-25 28-25h24v136h-24c-13 0-23 4-28 13Z" fill="rgba(251,191,36,.08)" stroke="#a78bfa" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M80 91h42M80 122h42M166 91h22M166 122h22" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+        </g>
+  
+</svg>

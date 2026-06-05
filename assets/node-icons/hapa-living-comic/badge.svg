@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">Hapa Living Comic Book node badge icon</title>
+  <desc id="desc">badge icon for Hapa Living Comic Book (hapa_node). Category: agent. Symbol: media.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="43%" r="68%">
+      <stop offset="0%" stop-color="#0f2742"/>
+      <stop offset="55%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="52%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="hsl(301 88% 62%)"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.8 0 0 0 0 1 0 0 0 .9 0" result="blueGlow"/>
+      <feMerge><feMergeNode in="blueGlow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#38bdf8" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="22" y="22" width="212" height="212" rx="32" fill="url(#bg)"/>
+  <rect x="22" y="22" width="212" height="212" rx="32" fill="url(#grid)" opacity=".7"/>
+  <rect x="27" y="27" width="202" height="202" rx="27" fill="none" stroke="url(#rim)" stroke-width="3" opacity=".86"/>
+  <circle cx="128" cy="128" r="93" fill="none" stroke="#22d3ee" stroke-width="2" stroke-dasharray="2 9" opacity=".4"/>
+  <circle cx="118.6" cy="220.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="66.0" cy="197.3" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="37.1" cy="147.6" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="42.9" cy="90.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="81.2" cy="47.6" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="137.4" cy="35.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="190.0" cy="58.7" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="218.9" cy="108.4" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="213.1" cy="165.5" r="3.4" fill="#fbbf24" opacity=".75"/><circle cx="174.8" cy="208.4" r="3.4" fill="#fbbf24" opacity=".75"/>
+  <g filter="url(#glow)">
+        <rect x="51" y="67" width="136" height="104" rx="18" fill="rgba(34,211,238,.08)" stroke="#a78bfa" stroke-width="8"/>
+        <path d="M187 101 224 77v84l-37-24Z" fill="rgba(251,191,36,.14)" stroke="#a78bfa" stroke-width="8" stroke-linejoin="round"/>
+        <path d="m105 95 48 24-48 24Z" fill="#38bdf8" opacity=".9"/>
+        </g>
+  
+</svg>

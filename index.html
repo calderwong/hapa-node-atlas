@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hapa Node Atlas</title>
+    <link rel="stylesheet" href="styles.css?v=hero-video-20260605" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Hapa Node Atlas home">
+        <img src="assets/paramation-logo.png" alt="" />
+        <span>
+          <span class="micro">PUBLIC NODE BROCHURE</span>
+          <strong>Hapa Node Atlas</strong>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#embeds">Embeds</a>
+        <a href="#repos">GitHub</a>
+        <a href="https://github.com/calderwong" target="_blank" rel="noreferrer">calderwong</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="micro">HAPA ECOSYSTEM / LIVE SURFACE INDEX</p>
+          <h1 id="page-title">Hapa Node Atlas</h1>
+          <p class="lede">
+            A brochure shell for the Hapa node constellation, embedding the first three public node surfaces and linking the wider public Hapa source map straight back to GitHub.
+          </p>
+          <div class="signal-row" aria-label="Site signals">
+            <span><i></i>3 node embeds</span>
+            <span><i></i>34 public Hapa repos linked</span>
+            <span><i></i>local-first surfaces</span>
+          </div>
+        </div>
+
+        <figure class="ecosystem-visual">
+          <video class="hero-loop" autoplay muted loop playsinline preload="metadata" poster="assets/atalas-hero-loop-poster.jpg" aria-label="Looping Hapa node atlas console animation">
+            <source src="assets/atalas-hero-loop.mp4" type="video/mp4" />
+          </video>
+          <figcaption>
+            <span>ecosystem context</span>
+            <span>cards / memory / avatars / nodes</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="embed-stage" id="embeds" aria-labelledby="embeds-title">
+        <div class="stage-head">
+          <div>
+            <p class="micro">EMBEDDED FRONT ENDS</p>
+            <h2 id="embeds-title">Start With The Three Core Nodes</h2>
+          </div>
+          <div class="stage-actions">
+            <a id="activeRepoLink" class="action-link" target="_blank" rel="noreferrer" href="https://github.com/calderwong/hapa-character-sheet">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3Z"/><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+              GitHub
+            </a>
+            <a id="activeEmbedLink" class="action-link secondary" target="_blank" rel="noreferrer" href="nodes/character-sheet/index.html?v=video-contain-20260605#presentation">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-5 0-9 4.5-10 7.5 1 3 5 7.5 10 7.5s9-4.5 10-7.5c-1-3-5-7.5-10-7.5Zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+              Open
+            </a>
+          </div>
+        </div>
+
+        <div class="node-tabs" role="tablist" aria-label="Node embeds">
+          <button class="node-tab active" id="tab-character" role="tab" aria-selected="true" aria-controls="node-frame-panel" data-node="character">
+            <span>01</span>
+            Character Sheet
+          </button>
+          <button class="node-tab" id="tab-second-brain" role="tab" aria-selected="false" aria-controls="node-frame-panel" data-node="secondBrain">
+            <span>02</span>
+            Second Brain
+          </button>
+          <button class="node-tab" id="tab-dev-proto" role="tab" aria-selected="false" aria-controls="node-frame-panel" data-node="devProto">
+            <span>03</span>
+            Dev Proto
+          </button>
+        </div>
+
+        <div class="stage-grid">
+          <aside class="node-detail" aria-live="polite">
+            <p class="micro" id="activeEyebrow">HAPA CHARACTER SHEET / HERO DETAIL</p>
+            <h3 id="activeTitle">Hapa Character Sheet</h3>
+            <p id="activeDescription">
+              The real Hapa Character Sheet app template embedded with the generated Calder Wong / CJ data pack.
+            </p>
+            <dl class="metric-list" id="activeMetrics"></dl>
+            <div class="detail-note" id="activeNote">
+              Loaded from the standalone Hapa Character Sheet prototype, including its data JS/JSON, mock routes, sprites, and media assets.
+            </div>
+          </aside>
+
+          <section class="frame-panel" id="node-frame-panel" aria-label="Selected node embed">
+            <div class="frame-toolbar">
+              <div>
+                <span class="status-dot"></span>
+                <span id="frameStatus">Calder/CJ dossier loaded</span>
+              </div>
+              <span id="framePath">nodes/character-sheet/index.html?v=video-contain-20260605#presentation</span>
+            </div>
+            <iframe
+              id="nodeFrame"
+              title="Hapa Character Sheet embed"
+              src="nodes/character-sheet/index.html?v=video-contain-20260605#presentation"
+              sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+            ></iframe>
+          </section>
+        </div>
+      </section>
+
+      <section class="repo-section" id="repos" aria-labelledby="repos-title">
+        <div class="section-head">
+          <div>
+            <p class="micro">PUBLIC SOURCE ROUTES</p>
+            <h2 id="repos-title">Direct GitHub Links</h2>
+            <p class="repo-summary">Verified public Hapa ecosystem repositories under calderwong, with the embedded trio first and the rest of the source map below.</p>
+          </div>
+          <a class="action-link" href="https://github.com/calderwong" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3Z"/><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+            Profile
+          </a>
+        </div>
+
+        <div class="repo-grid">
+          <article class="repo-card">
+            <span class="repo-index">01</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-character-sheet/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-character-sheet</h3>
+            <p>Public character dossier app that turns Second Brain projection data into RPG-style skills, proof maps, loadout, timeline, profile, and passport views.</p>
+            <a href="https://github.com/calderwong/hapa-character-sheet" target="_blank" rel="noreferrer">github.com/calderwong/hapa-character-sheet</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">02</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-second-brain/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-second-brain</h3>
+            <p>Local-first knowledge database and operator UI for media history, cards, wiki articles, and agent context.</p>
+            <a href="https://github.com/calderwong/hapa-second-brain" target="_blank" rel="noreferrer">github.com/calderwong/hapa-second-brain</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">03</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-dev-proto/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-dev-proto</h3>
+            <p>Electron, React, TypeScript, and Vite sandbox for chat, cards, wormholes, forge, wiki, local AI, and P2P.</p>
+            <a href="https://github.com/calderwong/hapa-dev-proto" target="_blank" rel="noreferrer">github.com/calderwong/hapa-dev-proto</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">04</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-avatar-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-avatar-node</h3>
+            <p>Avatar and phamiliar lineage node for character variants, pose/media exports, source-image handling, and avatar evidence trails.</p>
+            <a href="https://github.com/calderwong/hapa-avatar-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-avatar-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">05</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa</h3>
+            <p>Master Hapa ecosystem repo for operating model docs, node maps, protocol standards, site surfaces, and cross-node coordination.</p>
+            <a href="https://github.com/calderwong/hapa" target="_blank" rel="noreferrer">github.com/calderwong/hapa</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">06</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-awesome/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-awesome</h3>
+            <p>First-entry ecosystem guide with node map, protocol overview, publication boundaries, and verified links into the public Hapa repos.</p>
+            <a href="https://github.com/calderwong/hapa-awesome" target="_blank" rel="noreferrer">github.com/calderwong/hapa-awesome</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">07</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-worldbuilding-wiki/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-worldbuilding-wiki</h3>
+            <p>Canon and wiki content repository for Hapa worldbuilding, protocol articles, cards, lore, and ecosystem documentation.</p>
+            <a href="https://github.com/calderwong/hapa-worldbuilding-wiki" target="_blank" rel="noreferrer">github.com/calderwong/hapa-worldbuilding-wiki</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">08</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-agent-registry-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-agent-registry-node</h3>
+            <p>Coordination node for agent profiles, harness records, registration metadata, tool posture, and agent-context routing.</p>
+            <a href="https://github.com/calderwong/hapa-agent-registry-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-agent-registry-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">09</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-chat-app/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-chat-app</h3>
+            <p>Hapa chat application surface for local-first AI conversations, operator workflows, and agent-facing interaction loops.</p>
+            <a href="https://github.com/calderwong/hapa-chat-app" target="_blank" rel="noreferrer">github.com/calderwong/hapa-chat-app</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">10</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-crypto-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-crypto-node</h3>
+            <p>Trust node for cryptographic and provenance-oriented Hapa workflows, including identity, key, and verification-adjacent surfaces.</p>
+            <a href="https://github.com/calderwong/hapa-crypto-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-crypto-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">11</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-cultivation-suite/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-cultivation-suite</h3>
+            <p>Protocol and practice suite for turning Hapa skills, quests, recurring loops, and self-improvement flows into inspectable work.</p>
+            <a href="https://github.com/calderwong/hapa-cultivation-suite" target="_blank" rel="noreferrer">github.com/calderwong/hapa-cultivation-suite</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">12</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-drama/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-drama</h3>
+            <p>Generation node for dramatic, narrative, and scene-oriented Hapa artifacts, useful for story beats and expressive media prompts.</p>
+            <a href="https://github.com/calderwong/hapa-drama" target="_blank" rel="noreferrer">github.com/calderwong/hapa-drama</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">13</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-janus-world-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-janus-world-node</h3>
+            <p>World node for Janus/Hapa world state, canon surfaces, scene structure, and local worldbuilding records.</p>
+            <a href="https://github.com/calderwong/hapa-janus-world-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-janus-world-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">14</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-keys-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-keys-node</h3>
+            <p>Local key-management node for Hapa identity, secret handling, trust operations, and private operator workflows.</p>
+            <a href="https://github.com/calderwong/hapa-keys-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-keys-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">15</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-lance-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-lance-node</h3>
+            <p>Memory node for Lance-style data storage and retrieval workflows across Hapa sources, artifacts, and indexed context.</p>
+            <a href="https://github.com/calderwong/hapa-lance-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-lance-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">16</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-lito/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-lito</h3>
+            <p>Generation node for lightweight Hapa media and creative workflow experiments within the public node family.</p>
+            <a href="https://github.com/calderwong/hapa-lito" target="_blank" rel="noreferrer">github.com/calderwong/hapa-lito</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">17</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-living-comic/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-living-comic</h3>
+            <p>App surface for living comic panels, narrative frames, character/story presentation, and generated visual sequences.</p>
+            <a href="https://github.com/calderwong/hapa-living-comic" target="_blank" rel="noreferrer">github.com/calderwong/hapa-living-comic</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">18</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-llada-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-llada-node</h3>
+            <p>Local generation node for LLaDA-style model workflows, inference surfaces, and Hapa prompt or completion experiments.</p>
+            <a href="https://github.com/calderwong/hapa-llada-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-llada-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">19</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-lore-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-lore-node</h3>
+            <p>Memory node for lore, canon, narrative taxonomy, worldbuilding records, and reusable Hapa context surfaces.</p>
+            <a href="https://github.com/calderwong/hapa-lore-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-lore-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">20</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-luminastem-station/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-luminastem-station</h3>
+            <p>Music and stem station for Hapa audio generation, visual performance surfaces, and media-production workflows.</p>
+            <a href="https://github.com/calderwong/hapa-luminastem-station" target="_blank" rel="noreferrer">github.com/calderwong/hapa-luminastem-station</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">21</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-mlx-station/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-mlx-station</h3>
+            <p>Apple Silicon MLX station for local model work, media generation support, and private compute experiments.</p>
+            <a href="https://github.com/calderwong/hapa-mlx-station" target="_blank" rel="noreferrer">github.com/calderwong/hapa-mlx-station</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">22</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-open-tasks-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-open-tasks-node</h3>
+            <p>Coordination node for open tasks, unresolved gaps, queueable work, and source-backed task state across Hapa projects.</p>
+            <a href="https://github.com/calderwong/hapa-open-tasks-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-open-tasks-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">23</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-overwatch-kanban/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-overwatch-kanban</h3>
+            <p>Kanban board surface for Overwatch state, task lanes, acceptance criteria, and append-only operational updates.</p>
+            <a href="https://github.com/calderwong/hapa-overwatch-kanban" target="_blank" rel="noreferrer">github.com/calderwong/hapa-overwatch-kanban</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">24</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-quest-keeper/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-quest-keeper</h3>
+            <p>Quest and task tracker for Hapa work, turning open objectives into structured cards, status, and follow-through loops.</p>
+            <a href="https://github.com/calderwong/hapa-quest-keeper" target="_blank" rel="noreferrer">github.com/calderwong/hapa-quest-keeper</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">25</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-song-registry/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-song-registry</h3>
+            <p>Registry node for songs, stems, music metadata, production references, and audio lineage in the Hapa media layer.</p>
+            <a href="https://github.com/calderwong/hapa-song-registry" target="_blank" rel="noreferrer">github.com/calderwong/hapa-song-registry</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">26</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-space/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-space</h3>
+            <p>Spatial/game-facing Hapa surface for world interactions, node space experiments, and C# runtime prototypes.</p>
+            <a href="https://github.com/calderwong/hapa-space" target="_blank" rel="noreferrer">github.com/calderwong/hapa-space</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">27</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-spaceship-desktop-hijack/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-spaceship-desktop-hijack</h3>
+            <p>Desktop app/manifold experiment for spaceship-style Hapa control surfaces, local context, and operator navigation.</p>
+            <a href="https://github.com/calderwong/hapa-spaceship-desktop-hijack" target="_blank" rel="noreferrer">github.com/calderwong/hapa-spaceship-desktop-hijack</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">28</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-spec-scaffold/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-spec-scaffold</h3>
+            <p>Protocol scaffold for Hapa node specs, standard surfaces, test fixtures, documentation, and implementation contracts.</p>
+            <a href="https://github.com/calderwong/hapa-spec-scaffold" target="_blank" rel="noreferrer">github.com/calderwong/hapa-spec-scaffold</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">29</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-telemetry-node/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-telemetry-node</h3>
+            <p>Coordination node for telemetry, health checks, status UI, event records, and cross-node operational signals.</p>
+            <a href="https://github.com/calderwong/hapa-telemetry-node" target="_blank" rel="noreferrer">github.com/calderwong/hapa-telemetry-node</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">30</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-wiki-growth-agent/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-wiki-growth-agent</h3>
+            <p>Memory node for wiki growth, article enrichment, canon expansion, Hapa card linkage, and curation-agent workflows.</p>
+            <a href="https://github.com/calderwong/hapa-wiki-growth-agent" target="_blank" rel="noreferrer">github.com/calderwong/hapa-wiki-growth-agent</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">31</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-wiki-viewer/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-wiki-viewer</h3>
+            <p>Application surface for browsing Hapa wiki records, canon pages, cards, documentation, and local knowledge views.</p>
+            <a href="https://github.com/calderwong/hapa-wiki-viewer" target="_blank" rel="noreferrer">github.com/calderwong/hapa-wiki-viewer</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">32</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/overwatch/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>overwatch</h3>
+            <p>Operational board and coordination system for tracking Hapa project state, lanes, status, priorities, and handoffs.</p>
+            <a href="https://github.com/calderwong/overwatch" target="_blank" rel="noreferrer">github.com/calderwong/overwatch</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">33</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-proto0.00.00.7-visualizer/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-proto0.00.00.7-visualizer</h3>
+            <p>Early Hapa visualizer prototype for exploring how node-space, cards, and ecosystem concepts could be shown interactively.</p>
+            <a href="https://github.com/calderwong/hapa-proto0.00.00.7-visualizer" target="_blank" rel="noreferrer">github.com/calderwong/hapa-proto0.00.00.7-visualizer</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-index">34</span>
+            <div class="repo-media">
+              <img src="assets/node-icons/hapa-scratchpad/card.svg" alt="" loading="eager" decoding="async">
+            </div>
+            <h3>hapa-scratchpad</h3>
+            <p>Scratchpad repository for Hapa experiments, rough notes, quick prototypes, and seed material that may graduate into nodes.</p>
+            <a href="https://github.com/calderwong/hapa-scratchpad" target="_blank" rel="noreferrer">github.com/calderwong/hapa-scratchpad</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js?v=compact-nodes-20260605"></script>
+  </body>
+</html>

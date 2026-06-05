@@ -1,6 +1,6 @@
 # Hapa Node Atlas
 
-Static brochure site for the public Hapa node constellation. It embeds the first three core node surfaces, the 3D Hapa Node Space graph, and the wider public Hapa source map.
+Static Atlas for the public Hapa ecosystem: a local-first AI and worldbuilding protocol made of cooperating nodes. It embeds public node surfaces, the 2D and 3D graph views, and the wider public Hapa source map.
 
 ## Demo
 

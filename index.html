@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hapa Node Atlas</title>
-    <link rel="stylesheet" href="styles.css?v=hero-video-20260605" />
+    <link rel="stylesheet" href="styles.css?v=dash-graph-20260605" />
   </head>
   <body>
     <header class="topbar">
@@ -18,6 +18,7 @@
       <nav class="topnav" aria-label="Primary">
         <a href="#embeds">Embeds</a>
         <a href="#repos">GitHub</a>
+        <a href="#node-swarm">Swarm</a>
         <a href="https://github.com/calderwong" target="_blank" rel="noreferrer">calderwong</a>
       </nav>
     </header>
@@ -434,8 +435,89 @@
           </article>
         </div>
       </section>
+
+      <section class="dash-graph-section" id="node-swarm" aria-labelledby="node-swarm-title">
+        <div class="section-head">
+          <div>
+            <p class="micro">.HAPADASH / FLOW PLAYBACK</p>
+            <h2 id="node-swarm-title">Flat 2D Node Swarm</h2>
+            <p class="repo-summary">Exported from the .hapaDash graph surface with monitored nodes, public pathways, and protocol flow scenarios.</p>
+          </div>
+          <div class="dash-summary-chips" id="dashGraphStats" aria-label=".hapaDash graph statistics">
+            <span>Loading graph</span>
+          </div>
+        </div>
+
+        <div class="dash-console" data-graph-shell>
+          <aside class="dash-mode-rail" aria-label=".hapaDash graph lanes">
+            <div class="dash-rail-head">
+              <span class="status-dot"></span>
+              <strong>.hapaDash</strong>
+              <small>Node Swarm</small>
+            </div>
+            <div class="dash-mode-list">
+              <span class="dash-mode-pill">Launcher</span>
+              <span class="dash-mode-pill active">Node Swarm</span>
+              <span class="dash-mode-pill">Resources</span>
+              <span class="dash-mode-pill">Docs</span>
+            </div>
+            <div class="dash-mini-readout">
+              <span>Mode</span>
+              <strong>Gravity</strong>
+            </div>
+            <div class="dash-mini-readout">
+              <span>Surface</span>
+              <strong>Atlas Embed</strong>
+            </div>
+          </aside>
+
+          <section class="dash-graph-main" aria-label=".hapaDash Node Swarm graph">
+            <div class="dash-graph-toolbar">
+              <div>
+                <p class="micro">NODE SWARM</p>
+                <strong id="dashGraphTitle">Hapa Protocol Graph</strong>
+              </div>
+              <div class="dash-toolbar-count" id="dashGraphCount">Graph standby</div>
+            </div>
+
+            <div class="dash-legend" id="dashGraphLegend" aria-label="Pathway layers"></div>
+
+            <div class="dash-flow-playback" aria-label="Flow playback">
+              <div class="dash-flow-head">
+                <div>
+                  <p class="micro">FLOW PLAYBACK</p>
+                  <h3 id="dashFlowTitle">Loading flow scenarios</h3>
+                </div>
+                <div class="dash-flow-controls">
+                  <button type="button" id="dashFlowPrev">Prev</button>
+                  <button type="button" class="active" id="dashFlowAuto">Auto</button>
+                  <button type="button" id="dashFlowNext">Next</button>
+                </div>
+              </div>
+              <p class="dash-flow-summary" id="dashFlowSummary"></p>
+              <p class="dash-flow-step" id="dashFlowStep"></p>
+              <div class="dash-flow-progress" id="dashFlowProgress"></div>
+            </div>
+
+            <div class="dash-canvas-wrap">
+              <canvas id="dashSwarm" aria-label="Animated flat 2D .hapaDash node graph"></canvas>
+              <div class="dash-graph-tooltip is-hidden" id="dashGraphTooltip"></div>
+            </div>
+          </section>
+
+          <aside class="dash-inspector" aria-live="polite">
+            <div>
+              <p class="micro" id="dashInspectorKicker">INSPECTOR</p>
+              <h3 id="dashInspectorTitle">Flow Route</h3>
+            </div>
+            <p id="dashInspectorBody">Active protocol flow data is loading from the .hapaDash export.</p>
+            <div class="dash-inspector-meta" id="dashInspectorMeta"></div>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <script src="script.js?v=compact-nodes-20260605"></script>
+    <script src="dash-graph.js?v=dash-graph-20260605"></script>
   </body>
 </html>

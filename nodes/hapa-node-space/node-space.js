@@ -18,6 +18,7 @@ const FLOW_VOICEOVER_BASE_URL = 'http://127.0.0.1:8758';
 const desktopBridge = window.hapaNodeSpace || null;
 const kanbanIngress = window.HAPA_KANBAN_INGRESS || null;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const compactViewport = window.matchMedia('(max-width: 760px)');
 const MAX_RENDER_PIXEL_RATIO = 1.5;
 const LABEL_RENDER_INTERVAL = 2;
 const SCENARIO_HIGHLIGHT_INTERVAL_MS = 34;
@@ -1394,8 +1395,8 @@ let cinematicMode = readStoredCinematicMode();
 let cinematicReturnUntil = 0;
 let musicMode = readStoredMusicMode();
 let musicCollapsed = readStoredMusicCollapsed();
-let controlRailOpen = readStoredRailOpen(CONTROL_RAIL_STORAGE_KEY, true);
-let inspectorRailOpen = readStoredRailOpen(INSPECTOR_RAIL_STORAGE_KEY, true);
+let controlRailOpen = readInitialRailOpen(CONTROL_RAIL_STORAGE_KEY, true);
+let inspectorRailOpen = readInitialRailOpen(INSPECTOR_RAIL_STORAGE_KEY, true);
 let backgroundMode = readStoredBackgroundMode();
 let armadaMode = readStoredArmadaMode();
 let musicLibrary = [];
@@ -3114,6 +3115,11 @@ function readStoredRailOpen(key, fallback = true) {
   }
 }
 
+function readInitialRailOpen(key, fallback = true) {
+  if (compactViewport.matches) return false;
+  return readStoredRailOpen(key, fallback);
+}
+
 function readStoredBackgroundMode() {
   try {
     const raw = localStorage.getItem(BACKGROUND_MODE_STORAGE_KEY);
@@ -3962,7 +3968,9 @@ function setRailOpen(rail, open, withSound = true) {
   const nextOpen = Boolean(open);
   const panel = isControl ? railControls.control : railControls.inspector;
   const toggle = isControl ? railControls.controlToggle : railControls.inspectorToggle;
-  const label = isControl ? 'Controls' : 'Details';
+  const label = compactViewport.matches
+    ? (isControl ? 'Ctrl' : 'Info')
+    : (isControl ? 'Controls' : 'Details');
   const storageKey = isControl ? CONTROL_RAIL_STORAGE_KEY : INSPECTOR_RAIL_STORAGE_KEY;
 
   if (isControl) {
@@ -3983,9 +3991,11 @@ function setRailOpen(rail, open, withSound = true) {
     toggle.setAttribute('aria-pressed', String(nextOpen));
   }
 
-  try {
-    localStorage.setItem(storageKey, String(nextOpen));
-  } catch {}
+  if (withSound) {
+    try {
+      localStorage.setItem(storageKey, String(nextOpen));
+    } catch {}
+  }
 
   if (withSound) playTone(nextOpen ? 'open' : 'close');
 }

@@ -2836,28 +2836,30 @@ body[data-armada-mode="true"] .node-label[data-armada="true"] .node-logo-orb::af
 @media (max-width: 760px) {
   body {
     overflow: auto;
+    overscroll-behavior: contain;
   }
 
   .node-space-app {
     position: relative;
-    min-height: 100vh;
+    min-height: 100svh;
     overflow: visible;
   }
 
   .space-topbar {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
+    top: max(8px, env(safe-area-inset-top));
+    left: 8px;
+    right: 8px;
     width: auto;
-    background: rgba(2, 6, 23, 0.96);
-  }
-
-  .space-topbar {
     grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 8px;
+    min-height: 0;
+    padding: 8px;
+    border-radius: 10px;
+    background: rgba(2, 6, 23, 0.88);
   }
 
-  .space-stats,
   .control-grid,
   .select-row,
   .inspector-columns,
@@ -2867,8 +2869,69 @@ body[data-armada-mode="true"] .node-label[data-armada="true"] .node-logo-orb::af
     grid-template-columns: 1fr;
   }
 
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    font-size: 13px;
+  }
+
+  .brand-copy b {
+    font-size: 16px;
+  }
+
+  .brand-copy small {
+    font-size: 10px;
+  }
+
   .space-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    gap: 6px;
+    overflow-x: visible;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .space-stats::-webkit-scrollbar,
+  .top-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .space-stats span {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 42px;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+
+  .space-stats span:last-child {
+    min-width: 0;
+  }
+
+  .space-stats b {
+    font-size: 13px;
+  }
+
+  .space-stats small {
+    overflow: hidden;
+    font-size: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .top-actions {
+    display: flex;
+    gap: 5px;
+    overflow-x: visible;
+    padding-bottom: 1px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .formation-buttons {
@@ -2880,16 +2943,82 @@ body[data-armada-mode="true"] .node-label[data-armada="true"] .node-logo-orb::af
   }
 
   .top-actions .icon-button {
-    flex: 1;
+    flex: 1 1 0;
     justify-content: center;
+    min-width: 0;
+    min-height: 34px;
+    padding: 0 6px;
+    border-radius: 8px;
+    font-size: 9px;
     text-align: center;
+    white-space: nowrap;
+  }
+
+  .top-actions .icon-button[href],
+  #resetCamera {
+    display: none;
+  }
+
+  .music-widget {
+    display: none;
+  }
+
+  body[data-music-mode="true"] .space-topbar {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  body[data-music-mode="true"] .music-widget {
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    transform: none;
+  }
+
+  body[data-music-mode="true"] .music-widget[data-collapsed="true"] {
+    width: auto;
+  }
+
+  .music-widget[data-collapsed="true"] .music-core {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .music-widget[data-collapsed="true"] .music-title-row h2 {
+    font-size: 11px;
+  }
+
+  .music-widget[data-collapsed="true"] .music-title-actions {
+    order: 0;
+  }
+
+  .music-widget[data-collapsed="true"] .music-collapse-button {
+    min-width: 58px;
+    min-height: 28px;
+    font-size: 9px;
+  }
+
+  .music-widget[data-collapsed="true"] .music-controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .music-widget[data-collapsed="true"] .music-progress {
+    height: 7px;
   }
 
   .scene-shell {
     position: relative;
     inset: auto;
-    height: 680px;
-    min-height: 680px;
+    height: min(100svh, 820px);
+    min-height: 560px;
   }
 
   .scene-root,
@@ -2907,7 +3036,11 @@ body[data-armada-mode="true"] .node-label[data-armada="true"] .node-logo-orb::af
     left: auto;
     right: auto;
     width: auto;
-    margin: 12px 10px;
+    max-height: none;
+    margin: 10px 8px;
+    padding: 10px;
+    gap: 9px;
+    border-radius: 10px;
   }
 
   .control-dock[data-open="false"],
@@ -2931,12 +3064,14 @@ body[data-armada-mode="true"] .node-label[data-armada="true"] .node-logo-orb::af
     left: auto;
     right: auto;
     width: auto;
-    margin: 12px 10px 24px;
+    margin: 10px 8px max(28px, calc(env(safe-area-inset-bottom) + 22px));
     max-height: none;
+    padding: 12px;
+    border-radius: 10px;
   }
 
   .node-label-inner {
-    max-width: 118px;
+    max-width: 104px;
     font-size: 9px;
   }
 

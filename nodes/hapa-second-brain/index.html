@@ -703,6 +703,16 @@
         wiki: ["WIKI + PROTOCOLS", "Protocol Articles And Documentation Spine", "Wiki records, protocol cards, docs, and contracts turn private work into inspectable operating knowledge."],
       };
 
+      const sectionHeroes = {
+        context: "../../assets/second-brain-heroes/context.jpg",
+        capabilities: "../../assets/second-brain-heroes/capabilities.jpg",
+        items: "../../assets/second-brain-heroes/items.jpg",
+        topics: "../../assets/second-brain-heroes/topics.jpg",
+        agents: "../../assets/second-brain-heroes/agents.jpg",
+        production: "../../assets/second-brain-heroes/production.jpg",
+        wiki: "../../assets/second-brain-heroes/wiki.jpg",
+      };
+
       const state = {
         section: "context",
         query: "",
@@ -755,8 +765,9 @@
 
       function hero() {
         const meta = sectionMeta[state.section];
+        const image = sectionHeroes[state.section] || "../../assets/second-brain-ai-hero.png";
         const queryCopy = state.query ? ` Active query: ${state.query}.` : "";
-        return `<section class="view-hero" style="--hero-image:url('../../assets/second-brain-ai-hero.png')">
+        return `<section class="view-hero" style="--hero-image:url('${esc(image)}')">
           <div class="view-hero-copy">
             <p class="micro">${esc(meta[0])}</p>
             <h2>${esc(meta[1])}</h2>

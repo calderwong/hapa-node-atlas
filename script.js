@@ -28,7 +28,7 @@ const nodes = {
       "Operator preview for media history, Hapa Cards, wiki articles, claims, taste, and agent context packs.",
     note:
       "The public repo ships a local API-backed UI. This embed uses brochure-safe demo data so it remains portable.",
-    frame: "nodes/hapa-second-brain/index.html",
+    frame: "nodes/hapa-second-brain/index.html?v=second-brain-heroes-20260605",
     repo: "https://github.com/calderwong/hapa-second-brain",
     status: "memory projection filled",
     metrics: [

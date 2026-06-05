@@ -1528,6 +1528,10 @@ iframe {
 }
 
 @media (max-width: 760px) {
+  body {
+    min-width: 0;
+  }
+
   main {
     width: min(100% - 20px, 1480px);
   }
@@ -1542,6 +1546,48 @@ iframe {
   .topnav,
   .stage-actions {
     justify-content: flex-start;
+  }
+
+  .topbar {
+    position: static;
+    gap: 10px;
+    min-height: 0;
+    padding: 10px;
+  }
+
+  .brand {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand strong {
+    font-size: 0.95rem;
+  }
+
+  .brand .micro {
+    font-size: 0.62rem;
+  }
+
+  .topnav {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .topnav a {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 0.8rem;
   }
 
   .hero {
@@ -1590,20 +1636,87 @@ iframe {
     grid-template-columns: 1fr;
   }
 
-  .node-tabs,
   .repo-grid {
     grid-template-columns: 1fr;
   }
 
+  .node-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .node-tab {
+    flex: 0 0 168px;
+    min-height: 46px;
+  }
+
+  .node-tab.active {
+    box-shadow: inset 0 -3px 0 var(--cyan), 0 0 28px rgba(34, 211, 238, 0.12);
+  }
+
+  .stage-grid,
+  .node-detail,
+  .frame-panel {
+    min-width: 0;
+  }
+
+  .stage-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
   .node-detail {
+    order: 2;
     grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .metric-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .metric-list div {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 3px;
+    min-height: 54px;
+  }
+
+  .metric-list dt,
+  .metric-list dd {
+    min-width: 0;
+  }
+
+  .detail-note {
+    font-size: 0.9rem;
   }
 
   .frame-panel {
-    min-height: 560px;
+    order: 1;
+    min-height: 0;
+    height: min(620px, 82svh);
+    max-width: 100%;
+  }
+
+  .frame-toolbar {
+    min-width: 0;
+  }
+
+  #framePath {
+    display: none;
   }
 
   iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: 516px;
   }
 

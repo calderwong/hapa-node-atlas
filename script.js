@@ -28,7 +28,7 @@ const nodes = {
       "Operator preview for media history, Hapa Cards, wiki articles, claims, taste, and agent context packs.",
     note:
       "The public repo ships a local API-backed UI. This embed uses brochure-safe demo data so it remains portable.",
-    frame: "nodes/hapa-second-brain/index.html?v=second-brain-heroes-20260605",
+    frame: "nodes/hapa-second-brain/index.html?v=mobile-submenus-20260605",
     repo: "https://github.com/calderwong/hapa-second-brain",
     status: "memory projection filled",
     metrics: [
@@ -48,7 +48,7 @@ const nodes = {
       "Built renderer embed for chat, card library, wormhole, forge, wiki, local AI, 3D Nexus, P2P, and operator surfaces.",
     note:
       "This brochure-safe embed mirrors the public renderer surface. The full built renderer is vendored behind the Open action.",
-    frame: "nodes/hapa-dev-proto/index.html?v=dev-proto-heroes-20260605",
+    frame: "nodes/hapa-dev-proto/index.html?v=mobile-submenus-20260605",
     open: "nodes/hapa-dev-proto-renderer/index.html",
     repo: "https://github.com/calderwong/hapa-dev-proto",
     status: "dev sandbox preview online",

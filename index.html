@@ -7,7 +7,7 @@
     <meta name="description" content="Hapa Node Atlas maps the public Hapa ecosystem: local-first AI nodes, memory, media, cards, agents, provenance, and protocol handoffs." />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=memory-video-20260607" />
+    <link rel="stylesheet" href="styles.css?v=podcast-video-20260607" />
   </head>
   <body>
     <header class="topbar">
@@ -157,10 +157,17 @@
             </div>
           </div>
 
-          <div class="memory-video-shell" data-memory-video-shell>
+          <div
+            class="memory-video-shell"
+            data-manual-video-shell
+            data-ready-status="Ready for playback"
+            data-playing-status="Memory graph online"
+            data-ended-status="Playback complete"
+          >
             <div class="memory-video-frame">
               <video
                 id="memoryVideo"
+                data-manual-video
                 preload="metadata"
                 playsinline
                 poster="assets/architecting-agentic-memory-graph-poster.jpg"
@@ -168,17 +175,17 @@
               >
                 <source src="assets/architecting-agentic-memory-graph.mp4" type="video/mp4" />
               </video>
-              <button class="memory-play-button" id="memoryPlayButton" type="button" aria-label="Play Intro to Hapa's Memory Systems video">
+              <button class="memory-play-button" id="memoryPlayButton" type="button" data-manual-video-play aria-label="Play Intro to Hapa's Memory Systems video">
                 <span class="memory-play-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></svg>
                 </span>
                 <span>
                   <span class="micro">MEMORY GRAPH</span>
-                  <strong id="memoryPlayLabel">Play</strong>
+                  <strong id="memoryPlayLabel" data-manual-video-label>Play</strong>
                 </span>
               </button>
               <div class="memory-video-hud" aria-label="Video status">
-                <span><i></i><span id="memoryVideoStatus">Ready for playback</span></span>
+                <span><i></i><span id="memoryVideoStatus" data-manual-video-status>Ready for playback</span></span>
                 <span>Second Brain / Nodes / Proof Trails</span>
               </div>
             </div>
@@ -251,6 +258,55 @@
               sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
             ></iframe>
           </section>
+        </div>
+      </section>
+
+      <section class="memory-video-section podcast-video-section" id="podcast-ep1" aria-labelledby="podcast-video-title">
+        <div class="memory-video-console podcast-video-console">
+          <div class="memory-video-copy">
+            <p class="micro">HAPA PODCAST / SECOND BRAIN OPERATING SYSTEM</p>
+            <h2 id="podcast-video-title">Hapa Podcast Ep.#1: Learn More</h2>
+            <p class="repo-summary">A longer-form guide to Hapa's Second Brain as an operating system: active memory, source truth, operator traces, and the protocol moves that turn raw context into reusable node intelligence.</p>
+            <div class="memory-video-readouts" aria-label="Podcast video telemetry">
+              <span><i></i>second brain podcast</span>
+              <span><i></i>20:24 runtime</span>
+              <span><i></i>manual launch</span>
+            </div>
+          </div>
+
+          <div
+            class="memory-video-shell"
+            data-manual-video-shell
+            data-ready-status="Podcast ready"
+            data-playing-status="Podcast channel online"
+            data-ended-status="Episode complete"
+          >
+            <div class="memory-video-frame">
+              <video
+                id="podcastVideo"
+                data-manual-video
+                preload="metadata"
+                playsinline
+                poster="assets/hapa-podcast-ep1-learn-more-poster.jpg"
+                aria-label="Hapa Podcast Episode 1: Learn More video"
+              >
+                <source src="assets/hapa-podcast-ep1-learn-more.mp4" type="video/mp4" />
+              </video>
+              <button class="memory-play-button" type="button" data-manual-video-play aria-label="Play Hapa Podcast Episode 1">
+                <span class="memory-play-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></svg>
+                </span>
+                <span>
+                  <span class="micro">PODCAST EP.01</span>
+                  <strong data-manual-video-label>Play</strong>
+                </span>
+              </button>
+              <div class="memory-video-hud" aria-label="Podcast video status">
+                <span><i></i><span data-manual-video-status>Podcast ready</span></span>
+                <span>Source Truth / Active Memory / Operator Trace</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -755,7 +811,7 @@
       </section>
     </main>
 
-    <script src="script.js?v=memory-video-20260607"></script>
+    <script src="script.js?v=podcast-video-20260607"></script>
     <script src="kanban-boards.js?v=kanban-bottom-20260605"></script>
     <script src="dash-graph.js?v=dash-graph-20260605"></script>
   </body>

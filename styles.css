@@ -673,6 +673,35 @@ main > section {
   z-index: 1;
 }
 
+.podcast-video-console {
+  background:
+    linear-gradient(rgba(245, 158, 11, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.035) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(245, 158, 11, 0.13), transparent 42%, rgba(217, 70, 239, 0.12)),
+    linear-gradient(135deg, rgba(2, 6, 23, 0.94), rgba(9, 17, 31, 0.88));
+  background-size: 24px 24px, 24px 24px, auto, auto;
+  border-color: rgba(245, 158, 11, 0.28);
+}
+
+.podcast-video-console .memory-video-frame {
+  border-color: rgba(245, 158, 11, 0.34);
+}
+
+.podcast-video-console .memory-video-frame::after {
+  border-color: rgba(34, 211, 238, 0.24);
+}
+
+.podcast-video-console .memory-video-readouts i,
+.podcast-video-console .memory-video-hud i {
+  background: var(--amber);
+  box-shadow: 0 0 15px var(--amber);
+}
+
+.podcast-video-console .memory-play-icon {
+  border-color: rgba(217, 70, 239, 0.44);
+  background: rgba(34, 211, 238, 0.13);
+}
+
 .memory-video-copy {
   display: grid;
   align-content: center;

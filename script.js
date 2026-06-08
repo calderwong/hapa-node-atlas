@@ -120,51 +120,62 @@ tabs.forEach((tab) => {
   tab.addEventListener("click", () => setActiveNode(tab.dataset.node));
 });
 
-const memoryVideo = document.querySelector("#memoryVideo");
-const memoryVideoShell = document.querySelector("[data-memory-video-shell]");
-const memoryPlayButton = document.querySelector("#memoryPlayButton");
-const memoryPlayLabel = document.querySelector("#memoryPlayLabel");
-const memoryVideoStatus = document.querySelector("#memoryVideoStatus");
+const manualVideoShells = [...document.querySelectorAll("[data-manual-video-shell]")];
 
-function setMemoryVideoState(state) {
-  if (!memoryVideoShell || !memoryPlayLabel || !memoryVideoStatus) return;
-  memoryVideoShell.classList.toggle("is-playing", state === "playing");
-  if (state === "playing") {
-    memoryVideo.controls = true;
-    memoryPlayLabel.textContent = "Playing";
-    memoryVideoStatus.textContent = "Memory graph online";
-    return;
-  }
-  memoryVideo.controls = false;
-  if (state === "ended") {
-    memoryPlayLabel.textContent = "Replay";
-    memoryVideoStatus.textContent = "Playback complete";
-    return;
-  }
-  memoryPlayLabel.textContent = memoryVideo.currentTime > 0 ? "Resume" : "Play";
-  memoryVideoStatus.textContent = memoryVideo.currentTime > 0 ? "Playback paused" : "Ready for playback";
-}
+function setupManualVideo(shell) {
+  const video = shell.querySelector("[data-manual-video]");
+  const playButton = shell.querySelector("[data-manual-video-play]");
+  const playLabel = shell.querySelector("[data-manual-video-label]");
+  const status = shell.querySelector("[data-manual-video-status]");
+  if (!video || !playButton || !playLabel || !status) return;
 
-if (memoryVideo && memoryPlayButton) {
-  memoryVideo.controls = false;
-  memoryPlayButton.addEventListener("click", async () => {
-    if (!memoryVideo.paused) {
-      memoryVideo.pause();
+  const readyStatus = shell.dataset.readyStatus || "Ready for playback";
+  const playingStatus = shell.dataset.playingStatus || "Video online";
+  const endedStatus = shell.dataset.endedStatus || "Playback complete";
+
+  function setState(state) {
+    shell.classList.toggle("is-playing", state === "playing");
+    if (state === "playing") {
+      video.controls = true;
+      playLabel.textContent = "Playing";
+      status.textContent = playingStatus;
       return;
     }
-    if (memoryVideo.ended) memoryVideo.currentTime = 0;
+    video.controls = false;
+    if (state === "ended") {
+      playLabel.textContent = "Replay";
+      status.textContent = endedStatus;
+      return;
+    }
+    playLabel.textContent = video.currentTime > 0 ? "Resume" : "Play";
+    status.textContent = video.currentTime > 0 ? "Playback paused" : readyStatus;
+  }
+
+  video.controls = false;
+  playButton.addEventListener("click", async () => {
+    if (!video.paused) {
+      video.pause();
+      return;
+    }
+    manualVideoShells.forEach((otherShell) => {
+      const otherVideo = otherShell.querySelector("[data-manual-video]");
+      if (otherVideo && otherVideo !== video && !otherVideo.paused) otherVideo.pause();
+    });
+    if (video.ended) video.currentTime = 0;
     try {
-      await memoryVideo.play();
+      await video.play();
     } catch {
-      memoryVideoStatus.textContent = "Use video controls to start";
+      status.textContent = "Use video controls to start";
     }
   });
-  memoryVideo.addEventListener("play", () => setMemoryVideoState("playing"));
-  memoryVideo.addEventListener("pause", () => {
-    if (!memoryVideo.ended) setMemoryVideoState("paused");
+  video.addEventListener("play", () => setState("playing"));
+  video.addEventListener("pause", () => {
+    if (!video.ended) setState("paused");
   });
-  memoryVideo.addEventListener("ended", () => setMemoryVideoState("ended"));
+  video.addEventListener("ended", () => setState("ended"));
 }
+
+manualVideoShells.forEach(setupManualVideo);
 
 window.addEventListener("keydown", (event) => {
   if (!event.altKey) return;

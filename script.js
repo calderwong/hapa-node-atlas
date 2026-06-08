@@ -120,6 +120,52 @@ tabs.forEach((tab) => {
   tab.addEventListener("click", () => setActiveNode(tab.dataset.node));
 });
 
+const memoryVideo = document.querySelector("#memoryVideo");
+const memoryVideoShell = document.querySelector("[data-memory-video-shell]");
+const memoryPlayButton = document.querySelector("#memoryPlayButton");
+const memoryPlayLabel = document.querySelector("#memoryPlayLabel");
+const memoryVideoStatus = document.querySelector("#memoryVideoStatus");
+
+function setMemoryVideoState(state) {
+  if (!memoryVideoShell || !memoryPlayLabel || !memoryVideoStatus) return;
+  memoryVideoShell.classList.toggle("is-playing", state === "playing");
+  if (state === "playing") {
+    memoryVideo.controls = true;
+    memoryPlayLabel.textContent = "Playing";
+    memoryVideoStatus.textContent = "Memory graph online";
+    return;
+  }
+  memoryVideo.controls = false;
+  if (state === "ended") {
+    memoryPlayLabel.textContent = "Replay";
+    memoryVideoStatus.textContent = "Playback complete";
+    return;
+  }
+  memoryPlayLabel.textContent = memoryVideo.currentTime > 0 ? "Resume" : "Play";
+  memoryVideoStatus.textContent = memoryVideo.currentTime > 0 ? "Playback paused" : "Ready for playback";
+}
+
+if (memoryVideo && memoryPlayButton) {
+  memoryVideo.controls = false;
+  memoryPlayButton.addEventListener("click", async () => {
+    if (!memoryVideo.paused) {
+      memoryVideo.pause();
+      return;
+    }
+    if (memoryVideo.ended) memoryVideo.currentTime = 0;
+    try {
+      await memoryVideo.play();
+    } catch {
+      memoryVideoStatus.textContent = "Use video controls to start";
+    }
+  });
+  memoryVideo.addEventListener("play", () => setMemoryVideoState("playing"));
+  memoryVideo.addEventListener("pause", () => {
+    if (!memoryVideo.ended) setMemoryVideoState("paused");
+  });
+  memoryVideo.addEventListener("ended", () => setMemoryVideoState("ended"));
+}
+
 window.addEventListener("keydown", (event) => {
   if (!event.altKey) return;
   const currentIndex = tabs.findIndex((tab) => tab.classList.contains("active"));

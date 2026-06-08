@@ -7,7 +7,7 @@
     <meta name="description" content="Hapa Node Atlas maps the public Hapa ecosystem: local-first AI nodes, memory, media, cards, agents, provenance, and protocol handoffs." />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=kanban-bottom-20260605" />
+    <link rel="stylesheet" href="styles.css?v=memory-video-20260607" />
   </head>
   <body>
     <header class="topbar">
@@ -139,6 +139,48 @@
               <span>context loss -> second brain</span>
               <span>stochastic output -> proof trails</span>
               <span>no manual -> operator console</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="memory-video-section" id="memory-systems" aria-labelledby="memory-video-title">
+        <div class="memory-video-console">
+          <div class="memory-video-copy">
+            <p class="micro">HAPA MEMORY SYSTEMS / AGENTIC GRAPH</p>
+            <h2 id="memory-video-title">Intro to Hapa's Memory Systems:</h2>
+            <p class="repo-summary">A guided pass through the agentic memory graph behind Hapa: source capture, durable context, node routing, and the operator-facing surfaces that keep AI work inspectable.</p>
+            <div class="memory-video-readouts" aria-label="Video telemetry">
+              <span><i></i>agentic memory graph</span>
+              <span><i></i>05:04 runtime</span>
+              <span><i></i>manual launch</span>
+            </div>
+          </div>
+
+          <div class="memory-video-shell" data-memory-video-shell>
+            <div class="memory-video-frame">
+              <video
+                id="memoryVideo"
+                preload="metadata"
+                playsinline
+                poster="assets/architecting-agentic-memory-graph-poster.jpg"
+                aria-label="Intro to Hapa's Memory Systems video"
+              >
+                <source src="assets/architecting-agentic-memory-graph.mp4" type="video/mp4" />
+              </video>
+              <button class="memory-play-button" id="memoryPlayButton" type="button" aria-label="Play Intro to Hapa's Memory Systems video">
+                <span class="memory-play-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></svg>
+                </span>
+                <span>
+                  <span class="micro">MEMORY GRAPH</span>
+                  <strong id="memoryPlayLabel">Play</strong>
+                </span>
+              </button>
+              <div class="memory-video-hud" aria-label="Video status">
+                <span><i></i><span id="memoryVideoStatus">Ready for playback</span></span>
+                <span>Second Brain / Nodes / Proof Trails</span>
+              </div>
             </div>
           </div>
         </div>
@@ -713,7 +755,7 @@
       </section>
     </main>
 
-    <script src="script.js?v=board-jumps-20260605"></script>
+    <script src="script.js?v=memory-video-20260607"></script>
     <script src="kanban-boards.js?v=kanban-bottom-20260605"></script>
     <script src="dash-graph.js?v=dash-graph-20260605"></script>
   </body>

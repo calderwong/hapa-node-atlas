@@ -2,6 +2,14 @@
 
 Static Atlas for the public Hapa ecosystem: a local-first AI and worldbuilding protocol made of cooperating nodes. It embeds public node surfaces, the 2D and 3D graph views, and the wider public Hapa source map.
 
+## Continue exploring
+
+- [Hapa Awesome](https://github.com/calderwong/hapa-awesome) — canonical public repository directory and first-entry guide.
+- [Human-readable public catalog](https://github.com/calderwong/hapa-awesome/blob/main/docs/NODES.md) — roles and routing for every public Hapa repository.
+- [Machine-readable public registry](https://github.com/calderwong/hapa-awesome/blob/main/data/nodes.json) — complete registry for agents and tools.
+- [Hapa front door](https://github.com/calderwong/hapa) — architecture, Node Space, and local operating model.
+- [Hapa Graphify](https://github.com/calderwong/hapa-graphify) — bounded relationship exploration across the ecosystem.
+
 ## Demo
 
 [View the GitHub Pages demo](https://calderwong.github.io/hapa-node-atlas/)
